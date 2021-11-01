@@ -1,0 +1,384 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/bin/node', '/usr/bin/npm', 'install', 'ngrok' ]
+2 info using npm@3.5.2
+3 info using node@v8.10.0
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readLocalPackageData
+7 silly fetchPackageMetaData ngrok
+8 silly fetchNamedPackageData ngrok
+9 silly mapToRegistry name ngrok
+10 silly mapToRegistry using default registry
+11 silly mapToRegistry registry https://registry.npmjs.org/
+12 silly mapToRegistry uri https://registry.npmjs.org/ngrok
+13 verbose request uri https://registry.npmjs.org/ngrok
+14 verbose request no auth needed
+15 info attempt registry request try #1 at 3:56:48 PM
+16 verbose request id 49c348e8342f27d8
+17 verbose etag W/"0714cbb0856984d28f92d630d86965e0"
+18 verbose lastModified Mon, 06 Sep 2021 13:21:35 GMT
+19 http request GET https://registry.npmjs.org/ngrok
+20 http 304 https://registry.npmjs.org/ngrok
+21 verbose headers { date: 'Mon, 25 Oct 2021 06:56:48 GMT',
+21 verbose headers   connection: 'keep-alive',
+21 verbose headers   'cf-ray': '6a398c0d4fcc3519-ICN',
+21 verbose headers   age: '71',
+21 verbose headers   'cache-control': 'public, max-age=300',
+21 verbose headers   etag: '"0714cbb0856984d28f92d630d86965e0"',
+21 verbose headers   'last-modified': 'Mon, 06 Sep 2021 13:21:35 GMT',
+21 verbose headers   vary: 'Accept-Encoding',
+21 verbose headers   'cf-cache-status': 'HIT',
+21 verbose headers   'expect-ct': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"',
+21 verbose headers   'x-amz-replication-status': 'COMPLETED',
+21 verbose headers   server: 'cloudflare' }
+22 silly get cb [ 304,
+22 silly get   { date: 'Mon, 25 Oct 2021 06:56:48 GMT',
+22 silly get     connection: 'keep-alive',
+22 silly get     'cf-ray': '6a398c0d4fcc3519-ICN',
+22 silly get     age: '71',
+22 silly get     'cache-control': 'public, max-age=300',
+22 silly get     etag: '"0714cbb0856984d28f92d630d86965e0"',
+22 silly get     'last-modified': 'Mon, 06 Sep 2021 13:21:35 GMT',
+22 silly get     vary: 'Accept-Encoding',
+22 silly get     'cf-cache-status': 'HIT',
+22 silly get     'expect-ct': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"',
+22 silly get     'x-amz-replication-status': 'COMPLETED',
+22 silly get     server: 'cloudflare' } ]
+23 verbose etag https://registry.npmjs.org/ngrok from cache
+24 verbose get saving ngrok to /root/.npm/registry.npmjs.org/ngrok/.cache.json
+25 silly install normalizeTree
+26 silly loadCurrentTree Finishing
+27 silly loadIdealTree Starting
+28 silly install loadIdealTree
+29 silly cloneCurrentTree Starting
+30 silly install cloneCurrentTreeToIdealTree
+31 silly cloneCurrentTree Finishing
+32 silly loadShrinkwrap Starting
+33 silly install loadShrinkwrap
+34 silly loadShrinkwrap Finishing
+35 silly loadAllDepsIntoIdealTree Starting
+36 silly install loadAllDepsIntoIdealTree
+37 silly resolveWithNewModule ngrok@4.2.2 checking installable status
+38 silly cache add args [ 'ngrok', null ]
+39 verbose cache add spec ngrok
+40 silly cache add parsed spec Result {
+40 silly cache add   raw: 'ngrok',
+40 silly cache add   scope: null,
+40 silly cache add   name: 'ngrok',
+40 silly cache add   rawSpec: '',
+40 silly cache add   spec: 'latest',
+40 silly cache add   type: 'tag' }
+41 silly addNamed ngrok@latest
+42 verbose addNamed "latest" is being treated as a dist-tag for ngrok
+43 info addNameTag [ 'ngrok', 'latest' ]
+44 silly mapToRegistry name ngrok
+45 silly mapToRegistry using default registry
+46 silly mapToRegistry registry https://registry.npmjs.org/
+47 silly mapToRegistry uri https://registry.npmjs.org/ngrok
+48 verbose addNameTag registry:https://registry.npmjs.org/ngrok not in flight; fetching
+49 verbose get https://registry.npmjs.org/ngrok not expired, no request
+50 silly addNameTag next cb for ngrok with tag latest
+51 silly addNamed ngrok@4.2.2
+52 verbose addNamed "4.2.2" is a plain semver version for ngrok
+53 silly cache afterAdd ngrok@4.2.2
+54 verbose afterAdd /root/.npm/ngrok/4.2.2/package/package.json not in flight; writing
+55 verbose afterAdd /root/.npm/ngrok/4.2.2/package/package.json written
+56 silly fetchNamedPackageData @types/node
+57 silly mapToRegistry name @types/node
+58 silly mapToRegistry scope (from package name) @types
+59 verbose mapToRegistry no registry URL found in name for scope @types
+60 silly mapToRegistry using default registry
+61 silly mapToRegistry registry https://registry.npmjs.org/
+62 silly mapToRegistry uri https://registry.npmjs.org/@types%2fnode
+63 silly fetchNamedPackageData decompress-zip
+64 silly mapToRegistry name decompress-zip
+65 silly mapToRegistry using default registry
+66 silly mapToRegistry registry https://registry.npmjs.org/
+67 silly mapToRegistry uri https://registry.npmjs.org/decompress-zip
+68 silly fetchNamedPackageData got
+69 silly mapToRegistry name got
+70 silly mapToRegistry using default registry
+71 silly mapToRegistry registry https://registry.npmjs.org/
+72 silly mapToRegistry uri https://registry.npmjs.org/got
+73 silly fetchNamedPackageData uuid
+74 silly mapToRegistry name uuid
+75 silly mapToRegistry using default registry
+76 silly mapToRegistry registry https://registry.npmjs.org/
+77 silly mapToRegistry uri https://registry.npmjs.org/uuid
+78 silly fetchNamedPackageData yaml
+79 silly mapToRegistry name yaml
+80 silly mapToRegistry using default registry
+81 silly mapToRegistry registry https://registry.npmjs.org/
+82 silly mapToRegistry uri https://registry.npmjs.org/yaml
+83 silly fetchNamedPackageData hpagent
+84 silly mapToRegistry name hpagent
+85 silly mapToRegistry using default registry
+86 silly mapToRegistry registry https://registry.npmjs.org/
+87 silly mapToRegistry uri https://registry.npmjs.org/hpagent
+88 verbose request uri https://registry.npmjs.org/decompress-zip
+89 verbose request no auth needed
+90 info attempt registry request try #1 at 3:56:48 PM
+91 verbose etag W/"9ca23f24e8407d01e8ec4f1a186975a6"
+92 verbose lastModified Mon, 11 Jan 2021 21:03:18 GMT
+93 http request GET https://registry.npmjs.org/decompress-zip
+94 verbose request uri https://registry.npmjs.org/uuid
+95 verbose request no auth needed
+96 info attempt registry request try #1 at 3:56:48 PM
+97 verbose etag W/"e3c2ca06c1e6533b4ea6ad1577751804"
+98 verbose lastModified Sun, 12 Sep 2021 18:44:11 GMT
+99 http request GET https://registry.npmjs.org/uuid
+100 verbose request uri https://registry.npmjs.org/yaml
+101 verbose request no auth needed
+102 info attempt registry request try #1 at 3:56:48 PM
+103 verbose etag W/"ee5a79c5ddaa7e0f6a3463f5ea325b8b"
+104 verbose lastModified Mon, 06 Sep 2021 17:27:26 GMT
+105 http request GET https://registry.npmjs.org/yaml
+106 verbose request uri https://registry.npmjs.org/hpagent
+107 verbose request no auth needed
+108 info attempt registry request try #1 at 3:56:48 PM
+109 verbose etag W/"c4042275bce997a7999d5efe2ab63ee1"
+110 verbose lastModified Wed, 30 Jun 2021 08:27:41 GMT
+111 http request GET https://registry.npmjs.org/hpagent
+112 verbose request uri https://registry.npmjs.org/got
+113 verbose request no auth needed
+114 info attempt registry request try #1 at 3:56:48 PM
+115 verbose etag W/"c403ea232050255a6aaf4cdc63be5e53"
+116 verbose lastModified Thu, 12 Aug 2021 07:13:05 GMT
+117 http request GET https://registry.npmjs.org/got
+118 verbose request uri https://registry.npmjs.org/@types%2fnode
+119 verbose request no auth needed
+120 info attempt registry request try #1 at 3:56:48 PM
+121 verbose etag W/"9a798dfac855353c98fe9447c75e82ff"
+122 verbose lastModified Fri, 22 Oct 2021 19:03:13 GMT
+123 http request GET https://registry.npmjs.org/@types%2fnode
+124 http 304 https://registry.npmjs.org/decompress-zip
+125 verbose headers { date: 'Mon, 25 Oct 2021 06:56:48 GMT',
+125 verbose headers   connection: 'keep-alive',
+125 verbose headers   'cf-ray': '6a398c0e18fb3519-ICN',
+125 verbose headers   age: '70',
+125 verbose headers   'cache-control': 'public, max-age=300',
+125 verbose headers   etag: '"9ca23f24e8407d01e8ec4f1a186975a6"',
+125 verbose headers   'last-modified': 'Mon, 11 Jan 2021 21:03:18 GMT',
+125 verbose headers   vary: 'Accept-Encoding',
+125 verbose headers   'cf-cache-status': 'HIT',
+125 verbose headers   'expect-ct': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"',
+125 verbose headers   server: 'cloudflare' }
+126 silly get cb [ 304,
+126 silly get   { date: 'Mon, 25 Oct 2021 06:56:48 GMT',
+126 silly get     connection: 'keep-alive',
+126 silly get     'cf-ray': '6a398c0e18fb3519-ICN',
+126 silly get     age: '70',
+126 silly get     'cache-control': 'public, max-age=300',
+126 silly get     etag: '"9ca23f24e8407d01e8ec4f1a186975a6"',
+126 silly get     'last-modified': 'Mon, 11 Jan 2021 21:03:18 GMT',
+126 silly get     vary: 'Accept-Encoding',
+126 silly get     'cf-cache-status': 'HIT',
+126 silly get     'expect-ct': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"',
+126 silly get     server: 'cloudflare' } ]
+127 verbose etag https://registry.npmjs.org/decompress-zip from cache
+128 verbose get saving decompress-zip to /root/.npm/registry.npmjs.org/decompress-zip/.cache.json
+129 silly resolveWithNewModule decompress-zip@0.3.3 checking installable status
+130 silly cache add args [ 'decompress-zip@^0.3.2', null ]
+131 verbose cache add spec decompress-zip@^0.3.2
+132 silly cache add parsed spec Result {
+132 silly cache add   raw: 'decompress-zip@^0.3.2',
+132 silly cache add   scope: null,
+132 silly cache add   name: 'decompress-zip',
+132 silly cache add   rawSpec: '^0.3.2',
+132 silly cache add   spec: '>=0.3.2 <0.4.0',
+132 silly cache add   type: 'range' }
+133 silly addNamed decompress-zip@>=0.3.2 <0.4.0
+134 verbose addNamed ">=0.3.2 <0.4.0" is a valid semver range for decompress-zip
+135 silly addNameRange { name: 'decompress-zip',
+135 silly addNameRange   range: '>=0.3.2 <0.4.0',
+135 silly addNameRange   hasData: false }
+136 silly mapToRegistry name decompress-zip
+137 silly mapToRegistry using default registry
+138 silly mapToRegistry registry https://registry.npmjs.org/
+139 silly mapToRegistry uri https://registry.npmjs.org/decompress-zip
+140 verbose addNameRange registry:https://registry.npmjs.org/decompress-zip not in flight; fetching
+141 verbose get https://registry.npmjs.org/decompress-zip not expired, no request
+142 silly addNameRange number 2 { name: 'decompress-zip',
+142 silly addNameRange   range: '>=0.3.2 <0.4.0',
+142 silly addNameRange   hasData: true }
+143 silly addNameRange versions [ 'decompress-zip',
+143 silly addNameRange   [ '0.0.1',
+143 silly addNameRange     '0.0.2',
+143 silly addNameRange     '0.0.3',
+143 silly addNameRange     '0.0.4',
+143 silly addNameRange     '0.0.5',
+143 silly addNameRange     '0.0.6',
+143 silly addNameRange     '0.0.7',
+143 silly addNameRange     '0.0.8',
+143 silly addNameRange     '0.1.0',
+143 silly addNameRange     '0.2.0',
+143 silly addNameRange     '0.2.1',
+143 silly addNameRange     '0.3.0',
+143 silly addNameRange     '0.3.1',
+143 silly addNameRange     '0.3.2',
+143 silly addNameRange     '0.2.2',
+143 silly addNameRange     '0.3.3' ] ]
+144 silly addNamed decompress-zip@0.3.3
+145 verbose addNamed "0.3.3" is a plain semver version for decompress-zip
+146 silly cache afterAdd decompress-zip@0.3.3
+147 verbose afterAdd /root/.npm/decompress-zip/0.3.3/package/package.json not in flight; writing
+148 verbose afterAdd /root/.npm/decompress-zip/0.3.3/package/package.json written
+149 http 304 https://registry.npmjs.org/hpagent
+150 verbose headers { date: 'Mon, 25 Oct 2021 06:56:48 GMT',
+150 verbose headers   connection: 'keep-alive',
+150 verbose headers   'cf-ray': '6a398c0f4a7d61d6-ICN',
+150 verbose headers   age: '70',
+150 verbose headers   'cache-control': 'public, max-age=300',
+150 verbose headers   etag: '"c4042275bce997a7999d5efe2ab63ee1"',
+150 verbose headers   'last-modified': 'Wed, 30 Jun 2021 08:27:41 GMT',
+150 verbose headers   vary: 'Accept-Encoding',
+150 verbose headers   'cf-cache-status': 'HIT',
+150 verbose headers   'expect-ct': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"',
+150 verbose headers   server: 'cloudflare' }
+151 silly get cb [ 304,
+151 silly get   { date: 'Mon, 25 Oct 2021 06:56:48 GMT',
+151 silly get     connection: 'keep-alive',
+151 silly get     'cf-ray': '6a398c0f4a7d61d6-ICN',
+151 silly get     age: '70',
+151 silly get     'cache-control': 'public, max-age=300',
+151 silly get     etag: '"c4042275bce997a7999d5efe2ab63ee1"',
+151 silly get     'last-modified': 'Wed, 30 Jun 2021 08:27:41 GMT',
+151 silly get     vary: 'Accept-Encoding',
+151 silly get     'cf-cache-status': 'HIT',
+151 silly get     'expect-ct': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"',
+151 silly get     server: 'cloudflare' } ]
+152 verbose etag https://registry.npmjs.org/hpagent from cache
+153 verbose get saving hpagent to /root/.npm/registry.npmjs.org/hpagent/.cache.json
+154 http 304 https://registry.npmjs.org/yaml
+155 verbose headers { date: 'Mon, 25 Oct 2021 06:56:48 GMT',
+155 verbose headers   connection: 'keep-alive',
+155 verbose headers   'cf-ray': '6a398c0f3bb0a1b9-ICN',
+155 verbose headers   age: '216',
+155 verbose headers   'cache-control': 'public, max-age=300',
+155 verbose headers   etag: '"ee5a79c5ddaa7e0f6a3463f5ea325b8b"',
+155 verbose headers   'last-modified': 'Mon, 06 Sep 2021 17:27:26 GMT',
+155 verbose headers   vary: 'Accept-Encoding',
+155 verbose headers   'cf-cache-status': 'HIT',
+155 verbose headers   'expect-ct': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"',
+155 verbose headers   'x-amz-replication-status': 'COMPLETED',
+155 verbose headers   server: 'cloudflare' }
+156 silly get cb [ 304,
+156 silly get   { date: 'Mon, 25 Oct 2021 06:56:48 GMT',
+156 silly get     connection: 'keep-alive',
+156 silly get     'cf-ray': '6a398c0f3bb0a1b9-ICN',
+156 silly get     age: '216',
+156 silly get     'cache-control': 'public, max-age=300',
+156 silly get     etag: '"ee5a79c5ddaa7e0f6a3463f5ea325b8b"',
+156 silly get     'last-modified': 'Mon, 06 Sep 2021 17:27:26 GMT',
+156 silly get     vary: 'Accept-Encoding',
+156 silly get     'cf-cache-status': 'HIT',
+156 silly get     'expect-ct': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"',
+156 silly get     'x-amz-replication-status': 'COMPLETED',
+156 silly get     server: 'cloudflare' } ]
+157 verbose etag https://registry.npmjs.org/yaml from cache
+158 verbose get saving yaml to /root/.npm/registry.npmjs.org/yaml/.cache.json
+159 http 304 https://registry.npmjs.org/uuid
+160 verbose headers { date: 'Mon, 25 Oct 2021 06:56:48 GMT',
+160 verbose headers   connection: 'keep-alive',
+160 verbose headers   'cf-ray': '6a398c0f3b673526-ICN',
+160 verbose headers   age: '167',
+160 verbose headers   'cache-control': 'public, max-age=300',
+160 verbose headers   etag: '"e3c2ca06c1e6533b4ea6ad1577751804"',
+160 verbose headers   'last-modified': 'Sun, 12 Sep 2021 18:44:11 GMT',
+160 verbose headers   vary: 'Accept-Encoding',
+160 verbose headers   'cf-cache-status': 'HIT',
+160 verbose headers   'expect-ct': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"',
+160 verbose headers   'x-amz-replication-status': 'COMPLETED',
+160 verbose headers   server: 'cloudflare' }
+161 silly get cb [ 304,
+161 silly get   { date: 'Mon, 25 Oct 2021 06:56:48 GMT',
+161 silly get     connection: 'keep-alive',
+161 silly get     'cf-ray': '6a398c0f3b673526-ICN',
+161 silly get     age: '167',
+161 silly get     'cache-control': 'public, max-age=300',
+161 silly get     etag: '"e3c2ca06c1e6533b4ea6ad1577751804"',
+161 silly get     'last-modified': 'Sun, 12 Sep 2021 18:44:11 GMT',
+161 silly get     vary: 'Accept-Encoding',
+161 silly get     'cf-cache-status': 'HIT',
+161 silly get     'expect-ct': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"',
+161 silly get     'x-amz-replication-status': 'COMPLETED',
+161 silly get     server: 'cloudflare' } ]
+162 verbose etag https://registry.npmjs.org/uuid from cache
+163 verbose get saving uuid to /root/.npm/registry.npmjs.org/uuid/.cache.json
+164 http 304 https://registry.npmjs.org/got
+165 verbose headers { date: 'Mon, 25 Oct 2021 06:56:48 GMT',
+165 verbose headers   connection: 'keep-alive',
+165 verbose headers   'cf-ray': '6a398c0f4b723526-ICN',
+165 verbose headers   age: '166',
+165 verbose headers   'cache-control': 'public, max-age=300',
+165 verbose headers   etag: '"c403ea232050255a6aaf4cdc63be5e53"',
+165 verbose headers   'last-modified': 'Thu, 12 Aug 2021 07:13:05 GMT',
+165 verbose headers   vary: 'Accept-Encoding',
+165 verbose headers   'cf-cache-status': 'HIT',
+165 verbose headers   'expect-ct': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"',
+165 verbose headers   'x-amz-replication-status': 'COMPLETED',
+165 verbose headers   server: 'cloudflare' }
+166 silly get cb [ 304,
+166 silly get   { date: 'Mon, 25 Oct 2021 06:56:48 GMT',
+166 silly get     connection: 'keep-alive',
+166 silly get     'cf-ray': '6a398c0f4b723526-ICN',
+166 silly get     age: '166',
+166 silly get     'cache-control': 'public, max-age=300',
+166 silly get     etag: '"c403ea232050255a6aaf4cdc63be5e53"',
+166 silly get     'last-modified': 'Thu, 12 Aug 2021 07:13:05 GMT',
+166 silly get     vary: 'Accept-Encoding',
+166 silly get     'cf-cache-status': 'HIT',
+166 silly get     'expect-ct': 'max-age=604800, report-uri="https://report-uri.cloudflare.com/cdn-cgi/beacon/expect-ct"',
+166 silly get     'x-amz-replication-status': 'COMPLETED',
+166 silly get     server: 'cloudflare' } ]
+167 verbose etag https://registry.npmjs.org/got from cache
+168 verbose get saving got to /root/.npm/registry.npmjs.org/got/.cache.json
+169 silly resolveWithNewModule hpagent@0.1.2 checking installable status
+170 silly cache add args [ 'hpagent@^0.1.2', null ]
+171 verbose cache add spec hpagent@^0.1.2
+172 silly cache add parsed spec Result {
+172 silly cache add   raw: 'hpagent@^0.1.2',
+172 silly cache add   scope: null,
+172 silly cache add   name: 'hpagent',
+172 silly cache add   rawSpec: '^0.1.2',
+172 silly cache add   spec: '>=0.1.2 <0.2.0',
+172 silly cache add   type: 'range' }
+173 silly addNamed hpagent@>=0.1.2 <0.2.0
+174 verbose addNamed ">=0.1.2 <0.2.0" is a valid semver range for hpagent
+175 silly addNameRange { name: 'hpagent', range: '>=0.1.2 <0.2.0', hasData: false }
+176 silly mapToRegistry name hpagent
+177 silly mapToRegistry using default registry
+178 silly mapToRegistry registry https://registry.npmjs.org/
+179 silly mapToRegistry uri https://registry.npmjs.org/hpagent
+180 verbose addNameRange registry:https://registry.npmjs.org/hpagent not in flight; fetching
+181 verbose stack Error: Missing required argument #1
+181 verbose stack     at andLogAndFinish (/usr/share/npm/lib/fetch-package-metadata.js:31:3)
+181 verbose stack     at fetchPackageMetadata (/usr/share/npm/lib/fetch-package-metadata.js:51:22)
+181 verbose stack     at resolveWithNewModule (/usr/share/npm/lib/install/deps.js:456:12)
+181 verbose stack     at /usr/share/npm/lib/install/deps.js:457:7
+181 verbose stack     at /usr/share/npm/node_modules/iferr/index.js:13:50
+181 verbose stack     at /usr/share/npm/lib/fetch-package-metadata.js:37:12
+181 verbose stack     at addRequestedAndFinish (/usr/share/npm/lib/fetch-package-metadata.js:82:5)
+181 verbose stack     at returnAndAddMetadata (/usr/share/npm/lib/fetch-package-metadata.js:117:7)
+181 verbose stack     at pickVersionFromRegistryDocument (/usr/share/npm/lib/fetch-package-metadata.js:134:20)
+181 verbose stack     at /usr/share/npm/node_modules/iferr/index.js:13:50
+182 verbose cwd /root/appserver/server/bin
+183 error Linux 4.15.0-118-generic
+184 error argv "/usr/bin/node" "/usr/bin/npm" "install" "ngrok"
+185 error node v8.10.0
+186 error npm  v3.5.2
+187 error code EMISSINGARG
+188 error typeerror Error: Missing required argument #1
+188 error typeerror     at andLogAndFinish (/usr/share/npm/lib/fetch-package-metadata.js:31:3)
+188 error typeerror     at fetchPackageMetadata (/usr/share/npm/lib/fetch-package-metadata.js:51:22)
+188 error typeerror     at resolveWithNewModule (/usr/share/npm/lib/install/deps.js:456:12)
+188 error typeerror     at /usr/share/npm/lib/install/deps.js:457:7
+188 error typeerror     at /usr/share/npm/node_modules/iferr/index.js:13:50
+188 error typeerror     at /usr/share/npm/lib/fetch-package-metadata.js:37:12
+188 error typeerror     at addRequestedAndFinish (/usr/share/npm/lib/fetch-package-metadata.js:82:5)
+188 error typeerror     at returnAndAddMetadata (/usr/share/npm/lib/fetch-package-metadata.js:117:7)
+188 error typeerror     at pickVersionFromRegistryDocument (/usr/share/npm/lib/fetch-package-metadata.js:134:20)
+188 error typeerror     at /usr/share/npm/node_modules/iferr/index.js:13:50
+189 error typeerror This is an error with npm itself. Please report this error at:
+189 error typeerror     <http://github.com/npm/npm/issues>
+190 verbose exit [ 1, true ]

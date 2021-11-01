@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
+    <title>adduser</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <header> </header>
+</head>
+<style>
+    .tablecenter {
+        margin: auto;
+        font-size: 4em;
+    }
+</style>
+
+<body>
+
+    <h1>
+        <p style="text-align:center;">차량등록</p>
+    </h1>
+    <table class="tablecenter">
+        <tr>
+            <td>차량번호*</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" id="input" name="name" placeholder="차량번호가 아이디입니다" required minlength="" maxlength=""
+                    size="30">
+            </td>
+        </tr>
+        <tr>
+            <td>비밀번호*</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" id="input" name="password" placeholder="비밀번호를 입력해주세요" required minlength=""
+                    maxlength="" size="30">
+            </td>
+        </tr>
+        <tr>
+            <td>비밀번호 확인*</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" id="input" name="check_password" placeholder="비밀번호를 입력해주세요" required minlength=""
+                    maxlength="" size="30">
+            </td>
+        </tr>
+        <tr>
+            <td>휴대폰 번호</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" id="input" name="check_password" placeholder="휴대폰번호를 입력해주세요" required minlength=""
+                    maxlength="" size="30">
+            </td>
+        </tr>
+        </p>
+    </table>
+    <br>
+
+    </form>
+
+</body>
+<div class="mainbuttoncenter">
+<input type="button" onclick="javascript:location.href='/'" value="확인" />
+<input type="button" value="팝업창 호출" onclick="showPopup();" />
+<script language="javascript">
+    function showPopup() { window.open("regpopup.ejs", "a", "width=400, height=300, left=100, top=50"); }
+</script>
+</div>
+</html>
