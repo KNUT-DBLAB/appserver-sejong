@@ -40,6 +40,9 @@ app.use('/parking', parkingRouter);
 var parking2Router = require('./routes/parking2');
 app.use('/parking2', parking2Router);
 
+var parkingloc = require('./routes/parkingloc');
+app.use('/parkingloc', parkingloc);
+
 var pickupRouter = require('./routes/pickup');
 app.use('/pickup', pickupRouter);
 

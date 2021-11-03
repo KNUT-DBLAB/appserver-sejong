@@ -12,9 +12,19 @@
         <p style="text-align:center;" onclick="javascript:location.href='/main'">세종시 자율주행 발렛 파킹</p>
     </h2>
     <p class="onmaptext">발렛 파킹</p>
-    <div class="parkingmap"style="width: auto; height:600px; border:3px solid rgb(0, 0, 0);">
-        <img src="" alt="주차장 지도" width:50px; height:50px; vertical-align: middle;>
-    </div>
+    <!-- 맵 api-->
+    <div id="map" style="width:auto;height:400px;"></div>
+        <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=4oxbi73uru&callback=initMap"></script>
+        <script type="text/javascript">
+            var map = null;
+    
+            function initMap() {
+                map = new naver.maps.Map('map', {
+                    center: new naver.maps.LatLng(36.49899, 127.28314),
+                    zoom: 17
+                });
+            }
+        </script>
 
     <div>
         <button class="styled2" type="button" onclick="javascript:location.href='/parking2'">

@@ -18,72 +18,20 @@ body {
   
 }
 
-
-
-
-
-
 /*nav bar 에서 클래스 지정해서 한개의 버튼만 오른쪽으로*/
 #navbarmenu li.dropdown{float:right;}
 
+.fontsize {font-size: large;} 
 
-
-
-    /*11.ejs 테이블*/
-    div.minimalistBlack {
-      /*테이블 테두리*/
-      border: 2px solid #9C6FBD;
-      width: 100%;
-      text-align: left;
-      border-collapse: collapse;
-    }
-    .divTable.minimalistBlack .divTableCell, .divTable.minimalistBlack .divTableHead {
-      /*테이블 세로*/
-      border: 1px solid #9C6FBD;
-      padding: 5px 4px;
-    }
-    .divTable.minimalistBlack .divTableBody .divTableCell {
-      font-size: 13px;
-    }
-    .divTable.minimalistBlack .divTableHeading {
-      background: #8D59B3;
-      /* 그라데이션
-      background: -moz-linear-gradient(top, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);
-      background: -webkit-linear-gradient(top, #dbdbdb 0%, #d3d3d3 66%, #CFCFCF 100%);
-      background: linear-gradient(to bottom, #db7093 0%, #d3d3d3 66%, #CFCFCF 100%);
-      */
-      /*제목 바로 아래*/
-      border-bottom: 1px solid #9C6FBD;
-    }
-    .divTable.minimalistBlack .divTableHeading .divTableHead {
-      font-size: 15px;
-      font-weight: bold;
-      color: #ffffff;
-      text-align: left;
-    }
-    .minimalistBlack .tableFootStyle {
-      font-size: 14px;
-    }
-    /* DivTable.com */
-    .divTable{ display: table; }
-    .divTableRow { display: table-row; }
-    .divTableHeading { display: table-header-group;}
-    .divTableCell, .divTableHead { display: table-cell;}
-    .divTableHeading { display: table-header-group;}
-    .divTableFoot { display: table-footer-group;}
-    .divTableBody { display: table-row-group;}
-
-  .fontsize {font-size: large;} 
-
-  td{
-    font-size: 20px;
-  }
-  input{
-    font-size: 20px;
-  }
-  div{
-    font-size: 20px;
-  }
+td{
+  font-size: 20px;
+}
+input{
+  font-size: 20px;
+}
+div{
+  font-size: 20px;
+}
 
   .map{
     margin: 5% ;
