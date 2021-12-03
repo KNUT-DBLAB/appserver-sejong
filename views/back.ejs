@@ -5,158 +5,59 @@
     <meta charset="UTF-8">
     <meta name="viewport"
         content="width=device-width, initial-scale=1.0, user-scalable=no, maximum-scale=1.0, minimum-scale=1.0">
-    <link rel="stylesheet"q type="text/css" href="../css/style.css">
-    <div id="navbarmenu">
-        <style>
-            ul {
-              list-style-type: none;
-              margin: 0;
-              padding: 0;
-              overflow: hidden;
-              background-color: #333;
-            }
-            
-            li {
-              float: left;
-            }
-            
-            li a, .dropbtn {
-              display: inline-block;
-              color: white;
-              text-align: center;
-              padding: 14px 16px;
-              text-decoration: none;
-            }
-            
-            li a:hover, .dropdown:hover .dropbtn {
-              background-color: red;
-            }
-            
-            li.dropdown {
-              display: inline-block;
-            }
-            
-            .dropdown-content {
-              display: none;
-              position: absolute;
-              background-color: #f9f9f9;
-              min-width: 160px;
-              box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-              z-index: 1;
-            }
-            
-            .dropdown-content a {
-              color: black;
-              padding: 12px 16px;
-              text-decoration: none;
-              display: block;
-              text-align: left;
-            }
-            
-            .dropdown-content a:hover {background-color: #f1f1f1;}
-            
-            .dropdown:hover .dropdown-content {
-              display: block;
-            }
-            #navbarmenu li.dropdown{float:right;}
-            </style>
+    <link rel="stylesheet" q type="text/css" href="../css/style.css">
 
-            <style>
-              * {
-    padding:0;
-    margin:0;
-    box-sizing:border-box;
-}
-
-body{
-    background-color:#eee;
-}
-
-.wrap {
-    padding:30px;
-}
-
-.tab_buttons{
-    position:relative;
-    padding:12px 0;
-    overflow:hidden;
-}
-
-.button_bg{
-    position:absolute;
-    top:50%;
-    left:0;
-    z-index:1;
-    transform: translateY(-50%);
-    display:inline-block;
-    width:108px;
-    height:45px;
-    background: linear-gradient(#e66465, #9198e5);
-    border-radius:45px;
-}
-
-.tab_buttons button {
-    position:relative;
-    z-index:2;
-    float:left; 
-    min-width:32px;
-    height: 45px;
-    padding:0 22px;
-    border:0 none;
-    background-color:transparent;
-    font-size:16px;
-    outline:none;
-    cursor: pointer;
-}
-
-.tab_buttons button.active{
-    color:#fff;
-    font-weight:bold;
-}
-
-.tab_contents{
-    position:relative;
-}
-.tab_content{
-    position:absolute;
-    top:0; 
-    left:20px;
-    z-index:1;
-    padding:20px;
-    transition: all 0.4s;
-    opacity:0;
-    color:#212121;
-}
-
-.tab_content.active{
-    left:0;
-    opacity:1;
-}
-            </style>
-
-            </head>
-            <body>
-            
-            <ul>
-              <li><img src="../public/images/123.jpg"></li>
-
-              <li class="dropdown">
-                <a href="javascript:void(0)" class="dropbtn"><img src="../image/menu_icon.png"></a>
-                <div class="dropdown-content">
-                  <a href="#">Link 1</a>
-                  <a href="#">Link 2</a>
-                  <a href="#">Link 3</a>
-                </div>
-              </li>
-            </ul>
-        </div>
-</head>
 <body>
-  <h1></h1>
-  <div style="width: 416px; height:400px; border:3px solid rgb(0, 0, 0);">
-    <img src=""alt="지도" width:50px;
-        height:50px; vertical-align: middle;>
-</div>
+    <h2>
+        <p style="text-align:center;" onclick="javascript:location.href='/main'">세종시 자율주행 발렛 파킹</p>
+    </h2>
+    <p class="onmaptext">차량 호출</p>
+    <!-- 맵 api-->
+    <div id="map" style="width:auto;height:400px;"></div>
+    <script type="text/javascript"
+        src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=4oxbi73uru&callback=initMap"></script>
+    <script type="text/javascript">
 
+        /*
+        function initMap() {
+            map = new naver.maps.Map('map', {
+                center: new naver.maps.LatLng(36.49899, 127.28314),
+                zoom: 17
+            });
+        }*/
+
+        const locations = [
+
+            { place: "마커1", lat: parseFloat(<%= data["x1"] %>), lng: parseFloat(<%= data["y1"] %>) },
+        ];
+
+
+
+        var map = new naver.maps.Map('map', {
+            center: new naver.maps.LatLng(36.49899, 127.28314),
+            zoom: 19
+        });
+
+        for (var i = 0; i < locations.length; i++) {
+            var marker = new naver.maps.Marker({
+                map: map,
+                title: locations[i].place,
+                position: new naver.maps.LatLng(locations[i].lat, locations[i].lng),
+            });
+        }
+
+        
+
+    </script>
+    <h2>
+        <p style="text-align:center;">호출 위치 선택</p>
+    </h2>
+    <div>
+        <button class="styled1" type="button" onclick="javascript:location.href='/pickup2'">
+            차량 호출 시작
+        </button>
+    </div>
 </body>
+
+
 </html>

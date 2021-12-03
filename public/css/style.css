@@ -1,6 +1,11 @@
-body, html{width:100%;height: 100%;overflow-x: hidden;}
-
-
+p {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
 
 body {
   padding: 50px;
@@ -18,9 +23,6 @@ body {
   
 }
 
-/*nav bar 에서 클래스 지정해서 한개의 버튼만 오른쪽으로*/
-#navbarmenu li.dropdown{float:right;}
-
 .fontsize {font-size: large;} 
 
 td{
@@ -35,7 +37,16 @@ div{
 
   .map{
     margin: 5% ;
+    width: auto;
+    height: 350px;
+    
+
   }
+  .imagee {
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
 
   .parkingmap{
     margin: 5%;
@@ -60,11 +71,11 @@ div{
 .styled {
   border: 0;
   line-height: 2.5;
-  font-size: 1rem;
+  font-size: 1.5rem;
   text-align: center;
   color: #fff;
   border-radius: 15px;
-  background-color: rgb(41, 103, 255);
+  background-color: rgb(87, 84, 181);
   width: 80%;
   margin: 10%;
   border-radius:22px;
@@ -75,11 +86,11 @@ div{
 .styled1 {
   border: 0;
   line-height: 3;
-  font-size: 1rem;
+  font-size: 1.5rem;
   text-align: center;
   color: #fff;
   border-radius: 15px;
-  background-color: rgb(41, 103, 255);
+  background-color: rgb(87, 84, 181);
   width: 90%;
   margin: 5%;
   border-radius:22px;
@@ -90,7 +101,7 @@ div{
 .styled2 {
   border: 0;
   line-height: 2.5;
-  font-size: 1rem;
+  font-size: 1.5rem;
   text-align: center;
   border-radius: 15px;
   background-color: rgb(243, 243, 243);
@@ -101,9 +112,112 @@ div{
   justify-content: center;
 }
 
+.button_parking {
+  border: 0;
+  line-height: 2;
+  font-size: 1rem;
+  text-align: center;
+  color: #fff;
+  background-color: rgb(54, 57, 63);
+  border-top-left-radius: 22px;
+  border-top-right-radius: 22px;
+  border-bottom-left-radius: 'value';
+  border-bottom-left-radius: 'value';
+  width: 100%;
+
+}
+
+
 .onmaptext{
   margin: 5%;
   font-size: 16px;
   font-weight: bold;
 
 }
+
+.top{
+  position :relative;
+
+}
+
+.topclass{
+  position: relative;
+  left:10px; 
+  top: -70px;
+
+}
+
+/* 뒤로가기 버튼 */
+.m_back {  
+  display:block;
+  position: absolute;
+  z-index: 100;    
+  margin: 0 0 0 0px;  
+  font-weight: 600;vertical-align: middle;
+  border-radius: 10px;  
+  
+  font-family: Wonchuri;  box-sizing: border-box; background: #fff;
+  border: 1px #b7b7b7 solid;
+  font-size: 11.5px;
+  top: 15px;
+  height: 37px;
+  color: #000;
+  line-height: 14px;
+  right: 20px;
+  width:40px;
+  text-align:center;
+   font-weight: 700;
+  }
+  .m_back {line-height:27px; letter-spacing:-0.5px;font-weight: 700;}
+
+
+
+  /* 양 옆 버튼 */
+.item-wrap {
+  max-width: 1280px;
+  margin: 0 auto;
+  
+}
+.item-wrap .items { /* 자식들을 감싸고 있는 부모 */
+  display: block;
+  font-size: 0; /* 가장 중요한 font-size: 0; 속성 */
+  margin: 0 -5px; /* 너비간 10px 간격을 만들기 위해 남은 5px을 양옆으로 땡겨줌 */ 
+}
+.item-wrap .items .item { /* 나란히 배치할 영역 */
+  display: inline-block;
+  width: 50%;
+  padding: 0 5px; /* 간격을 위해 각 너비에 준 패딩 5px을 줌 */
+  vertical-align: middle; /* 나란히 배치하는 와중에 수직정렬도 가운데로 하려고 준 속성 */
+  text-align: center; /* 영역 안 태그들의 텍스트가 center로 오도록 준 속성 */
+  box-sizing: border-box; /* width값이 오롯이 50%를 갖게 하기 위해 준 속성 */
+}
+.item-wrap .items .item .inner { /* 나란히 배치할 영역 안 텍스트를 감싼 div */
+  height: 50px;
+  font-size: initial; /* font-size: 0;을 하면 그 아래 자식들 모두 상속받기 때문에 텍스트가 있는 경우라면 꼭 줘야할 속성 */
+  color: #fff;
+  background-color: rgb(41, 103, 255); /* 간격과 영역을 보여주기 위한 속성 */
+  margin: 5%;
+  border-radius:22px;
+  padding:0 18px;
+  justify-content: center;
+}
+.item-wrap .items .item .inner:before { /* 텍스트를 수직 가운데 정렬하기 위한 가상선택자 */
+  content: ''; /* 가상선택자 안에 빈값을 넣어주기 위해 적용한 속성 */
+  display: inline-block; /* inline-block이어야 vertical-align을 쓸 수 있기 때문에 준 속성 */
+  vertical-align: middle; /* 수직 가운데 정렬을 하기 위해 준 속성 */
+  width: 0; /* 다음에 올 태그와 수직을 맞추기 위한 것이므로 width값은 필요없어서 0으로 줌 */
+  height: 100%; /* height값은 부모의 높이값을 100% 상속받아야 하기 때문에 준 속성 */
+}
+.item-wrap .items .item .inner span { /* 가상선택자와 나란히 배치하기 위해 준 속성 */
+  display: inline-block;
+  vertical-align: middle;
+  
+}
+
+/* h2 {
+  color: #fff;
+  padding: 0.7rem 0.7rem 0.7rem 2rem;
+  background-image: -webkit-linear-gradient(left, #7c4dff 0%, #a7ffeb 100%);
+  background-image: linear-gradient(to right, #7c4dff 0%, #a7ffeb 100%);
+
+} */

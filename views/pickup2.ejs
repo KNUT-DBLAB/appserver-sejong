@@ -9,30 +9,265 @@
 
 <body>
     <h2>
-        <p style="text-align:center;" onclick="javascript:location.href='/main'">세종시 자율주행 발렛 파킹</p>
+        <p style="text-align:center;" >세종시 자율주행 발렛 파킹</p>
     </h2>
-    <p class="onmaptext">발렛 파킹</p>
+    
+    <p class="button_parking">발렛 픽업 중</p>
     <!-- 맵 api-->
     <div id="map" style="width:auto;height:400px;"></div>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
         <script type="text/javascript" src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=4oxbi73uru&callback=initMap"></script>
         <script type="text/javascript">
+            // 시간 받은것 변수에 넣어줘야함
             var map = null;
     
-            function initMap() {
-                map = new naver.maps.Map('map', {
-                    center: new naver.maps.LatLng(36.49899, 127.28314),
-                    zoom: 17
+            var map = new naver.maps.Map('map', {
+            center: new naver.maps.LatLng(36.498418, 127.28269),
+            zoom: 18
+        });
+
+        
+//1
+var polygon = new naver.maps.Polygon({
+    map: map,
+    paths: [
+        [
+            new naver.maps.LatLng(36.49801, 127.282085,),
+            new naver.maps.LatLng(36.498039, 127.282049),
+            new naver.maps.LatLng(36.498023, 127.282029),
+            new naver.maps.LatLng(36.497994, 127.282065)
+
+        ]
+    ],
+    fillColor: '#ff0000',
+    fillOpacity: 0.3,
+    strokeColor: '#ff0000',
+    strokeOpacity: 0.6,
+    strokeWeight: 3
+});
+//2
+var polygon = new naver.maps.Polygon({
+    map: map,
+    paths: [
+        [
+            new naver.maps.LatLng(36.498099, 127.282295),
+            new naver.maps.LatLng(36.498071, 127.28233),
+            new naver.maps.LatLng(36.498087, 127.28235),
+            new naver.maps.LatLng(36.498115, 127.282315)
+
+        ]
+    ],
+    fillColor: '#ff0000',
+    fillOpacity: 0.3,
+    strokeColor: '#ff0000',
+    strokeOpacity: 0.6,
+    strokeWeight: 3
+});
+//3
+var polygon = new naver.maps.Polygon({
+    map: map,
+    paths: [
+        [
+            new naver.maps.LatLng(36.498233, 127.282362),
+            new naver.maps.LatLng(36.498262, 127.282326),
+            new naver.maps.LatLng(36.498246, 127.282306),
+            new naver.maps.LatLng(36.498217, 127.282342)
+
+        ]
+    ],
+    fillColor: '#ff0000',
+    fillOpacity: 0.3,
+    strokeColor: '#ff0000',
+    strokeOpacity: 0.6,
+    strokeWeight: 3
+});
+//4
+var polygon = new naver.maps.Polygon({
+    map: map,
+    paths: [
+        [
+            new naver.maps.LatLng(36.498389, 127.282725),
+            new naver.maps.LatLng(36.498418, 127.28269),
+            new naver.maps.LatLng(36.498433, 127.282709),
+            new naver.maps.LatLng(36.498405, 127.282745)
+
+        ]
+    ],
+    fillColor: '#ff0000',
+    fillOpacity: 0.3,
+    strokeColor: '#ff0000',
+    strokeOpacity: 0.6,
+    strokeWeight: 3
+});
+
+//5
+var polygon = new naver.maps.Polygon({
+    map: map,
+    paths: [
+        [
+            new naver.maps.LatLng(36.498582, 127.282722),
+            new naver.maps.LatLng(36.498553, 127.282759),
+            new naver.maps.LatLng(36.498537, 127.282739),
+            new naver.maps.LatLng(36.498566, 127.282703)
+
+        ]
+    ],
+    fillColor: '#ff0000',
+    fillOpacity: 0.3,
+    strokeColor: '#ff0000',
+    strokeOpacity: 0.6,
+    strokeWeight: 3
+});
+//6
+var polygon = new naver.maps.Polygon({
+    map: map,
+    paths: [
+        [
+            new naver.maps.LatLng(36.498866, 127.283073),
+            new naver.maps.LatLng(36.498837, 127.28311),
+            new naver.maps.LatLng(36.49882, 127.28309),
+            new naver.maps.LatLng(36.49885, 127.283053)
+
+        ]
+    ],
+    fillColor: '#ff0000',
+    fillOpacity: 0.3,
+    strokeColor: '#ff0000',
+    strokeOpacity: 0.6,
+    strokeWeight: 3
+});
+
+//7
+var polygon = new naver.maps.Polygon({
+    map: map,
+    paths: [
+        [
+            new naver.maps.LatLng(36.498817, 127.283254),
+            new naver.maps.LatLng(36.498801, 127.283234),
+            new naver.maps.LatLng(36.498829, 127.283199),
+            new naver.maps.LatLng(36.498845, 127.283219)
+
+        ]
+    ],
+    fillColor: '#ff0000',
+    fillOpacity: 0.3,
+    strokeColor: '#ff0000',
+    strokeOpacity: 0.6,
+    strokeWeight: 3
+});
+
+//8
+var polygon = new naver.maps.Polygon({
+    map: map,
+    paths: [
+        [
+            new naver.maps.LatLng(36.498819, 127.283357),
+            new naver.maps.LatLng(36.498791, 127.283392),
+            new naver.maps.LatLng(36.498777, 127.283374),
+            new naver.maps.LatLng(36.498804, 127.283339)
+
+        ]
+    ],
+    fillColor: '#ff0000',
+    fillOpacity: 0.3,
+    strokeColor: '#ff0000',
+    strokeOpacity: 0.6,
+    strokeWeight: 3
+});
+
+//9
+var polygon = new naver.maps.Polygon({
+    map: map,
+    paths: [
+        [
+            new naver.maps.LatLng(36.498446, 127.282893),
+            new naver.maps.LatLng(36.498418, 127.282928),
+            new naver.maps.LatLng(36.498402, 127.282908),
+            new naver.maps.LatLng(36.498429, 127.282873)
+
+        ]
+    ],
+    fillColor: '#ff0000',
+    fillOpacity: 0.3,
+    strokeColor: '#ff0000',
+    strokeOpacity: 0.6,
+    strokeWeight: 3
+});
+
+//10
+var polygon = new naver.maps.Polygon({
+    map: map,
+    paths: [
+        [
+            new naver.maps.LatLng(36.4982, 127.28259),
+            new naver.maps.LatLng(36.498173, 127.282625),
+            new naver.maps.LatLng(36.498157, 127.282606),
+            new naver.maps.LatLng(36.498185, 127.282571)
+
+        ]
+    ],
+    fillColor: '#ff0000',
+    fillOpacity: 0.3,
+    strokeColor: '#ff0000',
+    strokeOpacity: 0.6,
+    strokeWeight: 3
+});
+            
+            $(function(){
+              var load = setInterval(function(){
+                $.ajax({
+                  url:'/pickup2/tracking',
+                  type:'POST',
+                  data: {pram :<%= time %>},
+                  success: function(rev_data){
+                    if (rev_data.length != 0) {
+                      console.log(rev_data);
+                      console.log(rev_data[0]["movey"]);
+                      for (var i=0; i<rev_data.length; i++){
+                        console.log(i);
+                        marker = new naver.maps.Marker({ 
+                          position: new naver.maps.LatLng(rev_data[i]["movex"], rev_data[i]["movey"]),
+                          map: map 
+                        }); 
+                      }
+
+                    }
+                    if (rev_data[rev_data.length-1]["carstatus"] == 2) {
+                      alert("픽업이 완료 되었습니다.");
+                      location.href = "/main";
+                      clearInterval(load);
+                    } else if (rev_data[rev_data.length-1]["carstatus"] == 0) {
+                      alert("픽업이 실패 하였습니다.");
+                      clearInterval(load);
+                    }
+                  }, error: function(){
+                    alert("error")
+                  }
                 });
-            }
+              },2000);                
+            });
+              /*
+              if (parseInt(<%= state %>) == 0){
+
+              } else {
+              
+	        //var first_time = <%= time %>
+              }
+              */  
         </script>
 
+
+
+        
     <div>
-        <button class="styled2" type="button" onclick="javascript:location.href='/pickup2'">
+        <button class="styled2" type="button" >
             <h2>
             차량 이동 중
         </h2>
         </button>
     </div>
+
+
 </body>
 
 
