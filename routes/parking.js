@@ -13,7 +13,7 @@ router.get('/', function(req, res, next) {
       console.log(err);
     } else {
       if (results.length == 0) {
-        res.render('parking',{slotcheck:0, data:{x1:1.1,y1:1.1,slotid:99},carid:req.query.cid});
+        res.render('parking',{slotcheck:0, data:{slotid:99},carid:req.query.cid});
       } else {
         const rand = Math.floor(Math.random() * results.length)
         //console.log(results[rand]);
@@ -37,6 +37,8 @@ router.post('/Request', function (req, res) {
         console.log(err);
       } else {
         console.log(results);
+        req.session.parkinglocx = results[0]['x1'];
+        req.session.parkinglocy = results[0]['y1'];
   
         var socket = net.connect({port:30000});
         socket.on('connect', function(){
