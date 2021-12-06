@@ -8,7 +8,7 @@
   <link rel="stylesheet" q type="text/css" href="../css/style.css">
 
 <body>
-  <h2>
+  <h2 class="maintext">
     <p style="text-align:center;">세종시 자율주행 발렛 파킹</p>
   </h2>
   <a href="javascript:void(0)" onclick="goBack()"><img
@@ -18,7 +18,7 @@
       window.history.back();
     }
   </script>
-  <p class="button_parking">발렛 파킹 중</p>
+  <p class="button_onmain">발렛 파킹 중</p>
   <!-- 맵 api-->
   <div id="map" style="width:auto;height:400px;"></div>
   <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
@@ -32,6 +32,12 @@
       center: new naver.maps.LatLng(36.498418, 127.28269),
       zoom: 18
     });
+
+
+
+
+
+
 
 
     //1
@@ -219,6 +225,21 @@
       strokeOpacity: 0.6,
       strokeWeight: 3
     });
+    var x = parseFloat(<%= d_x %>);
+    var y = parseFloat(<%= d_y %>);
+    var position = new naver.maps.LatLng(x, y);
+    var markerOptions = {
+      position: position,
+      map: map,
+      icon: {
+        url: '../images/parking.png',
+        size: new naver.maps.Size(70, 70),
+        origin: new naver.maps.Point(0, 0),
+        anchor: new naver.maps.Point(25, 26)
+      }
+    }
+    new naver.maps.Marker(markerOptions);
+
 
     $(function () {
       var load = setInterval(function () {
@@ -237,7 +258,6 @@
                 map: map
               });
             }
-
           }
           console.log(rev_data[rev_data.length - 1]["carstatus"]);
           if (rev_data[rev_data.length - 1]["carstatus"] == 2) {
@@ -262,7 +282,7 @@
       <h2>
         차량 이동 중
       </h2>
-
+      
   </div>
 </body>
 

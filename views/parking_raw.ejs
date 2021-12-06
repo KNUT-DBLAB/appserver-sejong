@@ -24,15 +24,15 @@
 
 
     <script>
-        function btnActive() {
-            const target = document.getElementById('target_btn');
-            target.disabled = false;
-        }
+        function btnActive()  {
+  const target = document.getElementById('target_btn');
+  target.disabled = false;
+}
 
-        function btnDisabled() {
-            const target = document.getElementById('target_btn');
-            target.disabled = true;
-        }
+function btnDisabled()  {
+  const target = document.getElementById('target_btn');
+  target.disabled = true;
+}
     </script>
     <!-- 본
     <div class="parkingmap"style="width: auto; height:400px; border:3px solid rgb(0, 0, 0);">
@@ -43,9 +43,7 @@
     <div id="map" style="width:auto;height:400px;"></div>
 
     <h2>
-        <p style="text-align:center;">세종특별시 120 주차장 98 주차노면<br>
-            <%= data["slotid"] %>번 주차면
-        </p>
+        <p style="text-align:center;">세종특별시 120 주차장 98 주차노면 <%= data["slotid"] %>번 주차면</p>
     </h2>
 
     <div>
@@ -66,6 +64,7 @@
             });
         }*/
 
+        let infoWindows = new Array(); //
         const locations = [
             /* x1, y1를 Get Value */
             { place: "마커1", lat: parseFloat(<%= data["x1"] %>), lng: parseFloat(<%= data["y1"] %>) },
@@ -75,7 +74,6 @@
             center: new naver.maps.LatLng(36.498418, 127.28269),
             zoom: 18
         });
-
 
 
         //1
@@ -259,49 +257,14 @@
             strokeWeight: 3
         });
 
-        // slotidString, MarkerString도 Debugging 필요
-        var slotidString = (<%= data["slotid"] %>);
-        // var MarkerString = (slotidString +"번 주차장 입니다");
-        var MarkerString = [
-            '<span class="marker-title">' + slotidString + '번' + '</span>' + '<span>주차장 입니다</span>'
-        ].join('');
 
-        //'<span class="info-title">MarkerString</span>' 
-        // 원하는 html 태그로 꾸며야 함.
-        var infowindow = new naver.maps.InfoWindow({
-            content: MarkerString,
-            // maxWidth: 180,
-            backgroundColor: "#ffffff",
-            borderColor: "#000",
-            borderWidth: 0,
-            // FontFace: 10,
-            anchorSize: new naver.maps.Size(10, 10),
-            // anchorSkew: false,
-            // anchorColor: "#eee",
-
-        });
         for (var i = 0; i < locations.length; i++) {
-            // 디버깅을 통해 infowindow가 정상적으로 출력이 안되는지, 업데이트 시 문제가 없는지 확인 필요
-            infowindow.close()
             var marker = new naver.maps.Marker({
                 map: map,
                 title: locations[i].place,
                 position: new naver.maps.LatLng(locations[i].lat, locations[i].lng),
             });
         }
-        // 디버깅을 통해 infowindow가 정상적으로 나타나는지 확인 필요
-        infowindow.open(map, marker)
-
-        // 클릭시 이벤트 발생                                     
-        // naver.maps.Event.addListener(marker, 'click', function (e) {
-        //     if (infowindow.getMap()) {
-        //         infowindow.close();
-        //     } else {
-        //         console.log(MarkerString)
-        //         infowindow.open(map, marker)
-        //     }
-        // });
-
         $("#parkingRequest").click(function () {
             if (<%= slotcheck %> == 1){
             $.ajax({

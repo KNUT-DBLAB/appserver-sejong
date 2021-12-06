@@ -16,16 +16,39 @@ router.get('/', function(req, res, next) {
   });
 });
 
+// router.get('/', function(req, res, next) {
+//   //console.log(req.query.cid);
+//   sql = 'select slotid, x1, y1 from parkingslot where slotstatus=1'
+//   db_carstatus(sql, res)
+// });
+
+// function db_carstatus(sql, res) {
+//   client.query(
+//     (err,result) => {
+//       if (err) {
+//         console.log(err);
+//         res.json(err)
+//       }else{
+//         var move =  
+//       }
+//     }
+//   )
+// }
+
+
 router.post('/Request', function (req, res) {
   var body = req.body;
   var carid = parseInt(body["car"]);
-  
-  sql = 'select * from pickuploc where pid=?';
+
+  console.log("pid : "); 
+  console.log(body["pid"]); 
+  sql = 'select * from pickuplot where pid=?';
   dbconfig.query(sql, body["pid"], function(err, results){
     if (err) {
       console.log(err);
     } else {
       console.log(results);
+      
      
       var socket = new net.Socket();
       socket.connect({host:'localhost', port:30000},function() {
@@ -59,11 +82,13 @@ router.post('/Request', function (req, res) {
           });
           // 차량 고장이나 요청응답실패를 위한 처리 구현해야함
           if (state == 2){
+            /*
             updatesql = 'update parkingslot set slotstatus = 1, carid = 99 where slotid=?'
             dbconfig.query(updatesql, parseInt(carid), function(err, results){
               if (err) { console.log(err); }
               else { console.log(results); }
             });
+            */
             socket.end();
           }
         });

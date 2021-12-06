@@ -7,7 +7,7 @@ var net = require('net');
 /* GET home page. */
 router.get('/', function(req, res, next) {
   //console.log(req.query.cid);
-  sql = 'select slotid, x1, y1 from parkingslot where slotstatus=0'
+  sql = 'select slotid, x1, y1 from parkingslot where slotstatus=1'
   dbconfig.query(sql, function(err, results){
     if (err) {
       console.log(err);
@@ -17,7 +17,8 @@ router.get('/', function(req, res, next) {
       } else {
         const rand = Math.floor(Math.random() * results.length)
         //console.log(results[rand]);
-        res.render('parking', {data: results[rand], carid : req.query.cid, slotcheck : 1});
+        //res.render('parking', {data: results[rand], carid : req.query.cid, slotcheck : 1});
+        res.render('parking', {data: results[1], carid : req.query.cid, slotcheck : 1});
       }
     }
   });
@@ -91,7 +92,7 @@ router.post('/Request', function (req, res) {
       }
     });
     /*
-    updatesql = 'update parkingslot set slotstatus = 1, carid = ? where slotid=?'
+    updatesql = 'update parkingslot set slotstatus = 0, carid = ? where slotid=?'
     dbconfig.query(updatesql, [parseInt(carid),parseInt(sid)], function(err, results){
       if (err) { 
         console.log(err);
