@@ -8,20 +8,21 @@
     <link rel="stylesheet" q type="text/css" href="../css/style.css">
 
 <body>
-
-    <h2 class="maintext" style="text-align:center;">
+    <h2 class="maintext" onclick="javascript:location.href='/main'" style="text-align:center;">
         세종시 자율주행 발렛 파킹
     </h2>
+
     <a href="javascript:void(0)" onclick="goBack()"><img
             src="https://cdn.pixabay.com/photo/2020/03/22/15/19/arrow-4957487_960_720.png" title="뒤로가기"
             class="m_back"></a>
+
     <script>
         function goBack() {
             window.history.back();
         }
     </script>
-    <p class="button_onmain">발렛 파킹</p>
 
+    <p class="button_onmain">발렛 파킹</p>
 
     <script>
         function btnActive() {
@@ -34,16 +35,11 @@
             target.disabled = true;
         }
     </script>
-    <!-- 본
-    <div class="parkingmap"style="width: auto; height:400px; border:3px solid rgb(0, 0, 0);">
-        <img src="" alt="주차장 지도" width:50px; height:50px; vertical-align: middle;>
-    </div>
-    -->
-    <!-- 맵 api-->
+
     <div id="map" style="width:auto;height:400px;"></div>
 
     <h2>
-        <p style="text-align:center;">세종특별시 120 주차장 98 주차노면<br>
+        <p style="text-align:center;">세종특별시 130 주차장 98 주차노면<br>
             <%= data["slotid"] %>번 주차면
         </p>
     </h2>
@@ -58,14 +54,6 @@
         src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=4oxbi73uru&callback=initMap"></script>
     <script type="text/javascript">
 
-        /*
-        function initMap() {
-            map = new naver.maps.Map('map', {
-                center: new naver.maps.LatLng(36.49899, 127.28314),
-                zoom: 17
-            });
-        }*/
-
         const locations = [
             /* x1, y1를 Get Value */
             { place: "마커1", lat: parseFloat(<%= data["x1"] %>), lng: parseFloat(<%= data["y1"] %>) },
@@ -75,8 +63,6 @@
             center: new naver.maps.LatLng(36.498418, 127.28269),
             zoom: 18
         });
-
-
 
         //1
         var polygon = new naver.maps.Polygon({
@@ -259,15 +245,11 @@
             strokeWeight: 3
         });
 
-        // slotidString, MarkerString도 Debugging 필요
         var slotidString = (<%= data["slotid"] %>);
-        // var MarkerString = (slotidString +"번 주차장 입니다");
         var MarkerString = [
             '<span class="marker-title">' + slotidString + '번' + '</span>' + '<span>주차장 입니다</span>'
         ].join('');
 
-        //'<span class="info-title">MarkerString</span>' 
-        // 원하는 html 태그로 꾸며야 함.
         var infowindow = new naver.maps.InfoWindow({
             content: MarkerString,
             // maxWidth: 180,
@@ -281,7 +263,6 @@
 
         });
         for (var i = 0; i < locations.length; i++) {
-            // 디버깅을 통해 infowindow가 정상적으로 출력이 안되는지, 업데이트 시 문제가 없는지 확인 필요
             infowindow.close()
             var marker = new naver.maps.Marker({
                 map: map,
@@ -289,9 +270,7 @@
                 position: new naver.maps.LatLng(locations[i].lat, locations[i].lng),
             });
         }
-        // 디버깅을 통해 infowindow가 정상적으로 나타나는지 확인 필요
         infowindow.open(map, marker)
-
         // 클릭시 이벤트 발생                                     
         // naver.maps.Event.addListener(marker, 'click', function (e) {
         //     if (infowindow.getMap()) {
@@ -301,23 +280,20 @@
         //         infowindow.open(map, marker)
         //     }
         // });
-
         $("#parkingRequest").click(function () {
             if (<%= slotcheck %> == 1){
             $.ajax({
                 url: '/parking/Request',
                 type: 'POST',
-                data: { slot:<%= data["slotid"] %>, car:<%=carid %>, x1:<%=data["x1"] %>, y1:<%= data["y1"] %>}
+                data: { slot:<%= data["slotid"] %>, car:<%=carid %>}
             });
-        location.href = "/parking2?sid=" +<%= data["slotid"] %> +"&cid=" +<%=carid %>;
+        location.href = "/parking2?x1=" +<%= data["x1"] %> +"&y1=" +<%=data["y1"] %> +"&cid=" +<%=carid %>;
           } else {
             alert("빈자리가 없습니다.");
         }
         });
     </script>
-
     <div>
 </body>
-
 
 </html>

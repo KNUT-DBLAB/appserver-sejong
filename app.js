@@ -28,7 +28,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(cookieParser());
-
 app.use(
   session({
       secret: "secret key",
@@ -40,7 +39,6 @@ app.use(
       cookie: { maxAge: 86400000 },
   })
 );
-
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);

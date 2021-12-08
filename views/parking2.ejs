@@ -33,13 +33,6 @@
       zoom: 18
     });
 
-
-
-
-
-
-
-
     //1
     var polygon = new naver.maps.Polygon({
       map: map,
@@ -112,7 +105,6 @@
       strokeOpacity: 0.6,
       strokeWeight: 3
     });
-
     //5
     var polygon = new naver.maps.Polygon({
       map: map,
@@ -149,7 +141,6 @@
       strokeOpacity: 0.6,
       strokeWeight: 3
     });
-
     //7
     var polygon = new naver.maps.Polygon({
       map: map,
@@ -168,7 +159,6 @@
       strokeOpacity: 0.6,
       strokeWeight: 3
     });
-
     //8
     var polygon = new naver.maps.Polygon({
       map: map,
@@ -187,7 +177,6 @@
       strokeOpacity: 0.6,
       strokeWeight: 3
     });
-
     //9
     var polygon = new naver.maps.Polygon({
       map: map,
@@ -206,7 +195,6 @@
       strokeOpacity: 0.6,
       strokeWeight: 3
     });
-
     //10
     var polygon = new naver.maps.Polygon({
       map: map,
@@ -225,8 +213,9 @@
       strokeOpacity: 0.6,
       strokeWeight: 3
     });
-    var x = parseFloat(<%= d_x %>);
-    var y = parseFloat(<%= d_y %>);
+
+    var x = parseFloat(<%= locx %>);
+    var y = parseFloat(<%= locy %>);
     var position = new naver.maps.LatLng(x, y);
     var markerOptions = {
       position: position,
@@ -240,13 +229,12 @@
     }
     new naver.maps.Marker(markerOptions);
 
-
     $(function () {
       var load = setInterval(function () {
         $.ajax({
           url: '/parking2/tracking',
           type: 'POST',
-          data: { pram:<%= time %>, pramcar: <%=carid%>},
+          data: { pram:<%= time %>, pramcar: <%=carid%>, locx:<%=locx %>, locy:<%=locy %>},
         success: function (rev_data) {
           if (rev_data.length != 0) {
             //console.log(rev_data);
@@ -255,10 +243,19 @@
               //console.log(i);
               marker = new naver.maps.Marker({
                 position: new naver.maps.LatLng(rev_data[i]["movex"], rev_data[i]["movey"]),
+                icon: {
+                  url: '../images/redcircle.png',
+                  size: new naver.maps.Size(70, 70),
+                  origin: new naver.maps.Point(0, 0),
+                  anchor: new naver.maps.Point(25, 26)
+                },
                 map: map
               });
             }
           }
+
+          var marker_1 = new naver.maps.Marker(markerOptions);
+
           console.log(rev_data[rev_data.length - 1]["carstatus"]);
           if (rev_data[rev_data.length - 1]["carstatus"] == 2) {
             alert("주차가 완료  되었습니다.");
@@ -282,7 +279,7 @@
       <h2>
         차량 이동 중
       </h2>
-      
+
   </div>
 </body>
 

@@ -20,29 +20,12 @@
         </script>
     </h2>
     <p class="button_onmain">차량 호출</p>
-    <!-- 맵 api-->
     <div id="map" style="width:auto;height:400px;"></div>
-    
-    
-<!-- 호출할 위치를 선택하면  위에있는 텍스트가 사라지고 아래의 텍스트가 나와야함-->
+
     <h2>
         <p span id="txtbox1" style="text-align:center;">지도에서 호출할 위치를 선택 해주세요.</p>
     </h2>
 
-
-    
-    <!--
-    <div class="item-wrap">
-        <div class="items">
-            <div class="item left">
-                <button class="styled1" , type="button" id="1_loc">1번 구역</button>
-            </div>
-            <div class="item right">
-                <button class="styled1" , type="button" id="2_loc">2번 구역</button>
-            </div>
-        </div>
-    </div>
-    -->
     <div>
         <button class="styled1" type="button" id="pickupRequest">
             차량 호출 시작
@@ -61,8 +44,6 @@
             center: new naver.maps.LatLng(36.498418, 127.28269),
             zoom: 17
         });
-
-        
         //1
         var polygon = new naver.maps.Polygon({
             map: map,
@@ -189,7 +170,6 @@
             strokeOpacity: 0.6,
             strokeWeight: 3
         });
-
         //8
         var polygon = new naver.maps.Polygon({
             map: map,
@@ -244,7 +224,6 @@
             strokeOpacity: 0.6,
             strokeWeight: 3
         });
-        
         var polygon = new naver.maps.Polygon({
             map: map,
             paths: [
@@ -262,7 +241,6 @@
             strokeOpacity: 0.6,
             strokeWeight: 3
         });
-
         var polygon = new naver.maps.Polygon({
             map: map,
             paths: [
@@ -295,18 +273,7 @@
                 position: new naver.maps.LatLng(locations[i].lat, locations[i].lng),
             });
         }
-        /*
-        $("#1_loc").click(function () {
-            loc_check = 1;
-            loc_data = 0;
-            console.log("1click");
-            console.log(loc_check);
-        });
-        $("#2_loc").click(function () {
-            loc_check = 1;
-            loc_data = 1;
-        });
-        */
+
         $("#pickupRequest").click(function () {
             console.log("loc_check");
             console.log(loc_check);
@@ -315,17 +282,22 @@
                     url: '/pickup/Request',
                     type: 'POST',
                     data: { pid: loc_data, car:<%=carid %>}
-            });
-
-            location.href = "/pickup2?cid=" +<%=carid %>;
+                });
+        if (loc_data == 1) {
+            location.href = "/pickup2?cid=" +<%=carid %> +"&y1=" + y1 + "&x1=" + x1;
+        } else {
+            location.href = "/pickup2?cid=" +<%=carid %> +"&y1=" + y2 + "&x1=" + x2;
+        }
             }else {
-              alert("픽업 구역부터 선택해주세요.");
-            }
+            alert("픽업 구역부터 선택해주세요.");
+        }
         });
     </script>
     <!-- 여기 버튼을 누르면 텍스트가 바뀌게 -->
     <script>
-        var position = new naver.maps.LatLng(36.498922, 127.281995);
+        var x1 = 36.498922;
+        var y1 = 127.281995;
+        var position = new naver.maps.LatLng(x1, y1);
         var markerOptions = {
             position: position,
             map: map,
@@ -340,40 +312,42 @@
         var marker_1 = new naver.maps.Marker(markerOptions);
     </script>
 
-        <script>
-            var position1 = new naver.maps.LatLng(36.497801, 127.283394);
-            var markerOptions = {
-                position: position1,
-                map: map,
-                icon: {
-                    url: '../images/parking.png',
-                    size: new naver.maps.Size(70, 70),
-                    origin: new naver.maps.Point(0, 0),
-                    anchor: new naver.maps.Point(25, 26)
-                    
-                }
-            };
-            var marker_2 = new naver.maps.Marker(markerOptions);
-        </script>
-        <!-- 파키장이 중복으로 선택되지 않게 하는 부분 추가 -->
-        <script>
-          naver.maps.Event.addListener(marker_1, 'click', function(){
+    <script>
+        var x2 = 36.497801;
+        var y2 = 127.283394;
+        var position1 = new naver.maps.LatLng(x2, y2);
+        var markerOptions = {
+            position: position1,
+            map: map,
+            icon: {
+                url: '../images/parking.png',
+                size: new naver.maps.Size(70, 70),
+                origin: new naver.maps.Point(0, 0),
+                anchor: new naver.maps.Point(25, 26)
+
+            }
+        };
+        var marker_2 = new naver.maps.Marker(markerOptions);
+    </script>
+    <!-- 파키장이 중복으로 선택되지 않게 하는 부분 추가 -->
+    <script>
+        naver.maps.Event.addListener(marker_1, 'click', function () {
             console.log("1 click");
             loc_check = 1;
             loc_data = 1;
             alert("픽업 지역이 선택되었습니다.");
-            document.getElementById("txtbox1").innerText = '세종특별시 120 주차장 1번 픽업장'
+            document.getElementById("txtbox1").innerText = '세종특별시 수목원로 130 픽업지점'
 
-          });
-          naver.maps.Event.addListener(marker_2, 'click', function(){
+        });
+        naver.maps.Event.addListener(marker_2, 'click', function () {
             console.log("2 click");
             loc_check = 1;
             loc_data = 2;
             alert("픽업 지역이 선택되었습니다.");
-            document.getElementById("txtbox1").innerText = '세종특별시 120 주차장 2번 픽업장'
+            document.getElementById("txtbox1").innerText = '세종특별시 수목원로 120 픽업지점'
 
-          });
-        </script>
+        });
+    </script>
 </body>
 
 

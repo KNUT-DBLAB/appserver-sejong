@@ -22,6 +22,11 @@ connection.query('select * from parkingslot', (error, rows, fields) =>{
 /* GET home page. */
 router.get('/', function(req, res, next) {
   req.session.parkingCheck = 0;
+  req.session.parkinglocx = 0.0;
+  req.session.parkinglocy = 0.0;
+  req.session.pickupCheck = 0;
+  req.session.pickuplocx = 0.0;
+  req.session.pickuplocy = 0.0;
   res.render('index', { title: 'Express' });
 });
 

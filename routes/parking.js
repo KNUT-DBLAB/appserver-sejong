@@ -1,33 +1,35 @@
 var express = require('express');
 var dbconfig = require('../config/dbconfig');
-var session =require('express-session');
 var router = express.Router();
 var net = require('net');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   //console.log(req.query.cid);
-  sql = 'select slotid, x1, y1 from parkingslot where slotstatus=1'
+  sql = 'select slotid, x1, y1 from parkingslot where slotstatus=1 order by parkingzone1 asc limit 1;'
   dbconfig.query(sql, function(err, results){
     if (err) {
       console.log(err);
     } else {
       if (results.length == 0) {
-        res.render('parking',{slotcheck:0, data:{x1:1.1,y1:1.1,slotid:99},carid:req.query.cid});
+        res.render('parking',{slotcheck:0, data:{slotid:99},carid:req.query.cid});
       } else {
-        const rand = Math.floor(Math.random() * results.length)
+        // const rand = Math.floor(Math.random() * results.length)
         //console.log(results[rand]);
-        //res.render('parking', {data: results[rand], carid : req.query.cid, slotcheck : 1});
-        res.render('parking', {data: results[1], carid : req.query.cid, slotcheck : 1});
+        res.render('parking', {data: results[0], carid : req.query.cid, slotcheck : 1});
+        // res.render('parking', {data: results[1], carid : req.query.cid, slotcheck : 1});
       }
     }
   });
 });
 
 router.post('/Request', function (req, res) {
+  console.log(req.session.parkingCheck);
   if (req.session.parkingCheck == 1) {
+    console.log("session exist "+req.session.parkingCheck);
     res.redirect('/paring2');
   } else {
+    console.log("session not exist");
     var carid = req.body["car"];
     var sid = req.body["slot"];
     console.log(carid);
@@ -36,8 +38,6 @@ router.post('/Request', function (req, res) {
       if (err) {
         console.log(err);
       } else {
-        console.log(results);
-  
         var socket = net.connect({port:30000});
         socket.on('connect', function(){
           console.log('connected to server!');
@@ -59,30 +59,6 @@ router.post('/Request', function (req, res) {
           console.log('data in');
 
         }); 
-        /*
-            console.log('서버가 보냄');
-            if (Buffer.byteLength(chunk)!=8){
-            var buftemp = chunk.slice(0, 8);
-            console.log(chunk);
-            console.log(buftemp);
-            }
-            console.log(Buffer.byteLength(chunk));
-            var state = chunk[0];
-            var cur_x1 = chunk.readDoubleBE(1);
-            var cur_y1 = chunk.readDoubleBE(9);
-            sql = 'insert into locinfo(carid, movex, movey, carstatus) values (?)';
-            var rev = [[parseInt(carid), cur_x1, cur_y1, state]]
-            console.log(rev);
-            dbconfig.query(sql, rev, function(err, data){
-              if (err) { console.log(err); }
-              console.log("1 record inserted");
-            });
-            // 차량 고장이나 요청응답실패를 위한 처리 구현해야함
-            if (state == 2){ 
-              socket.end();
-            }
-          });
-          */
         socket.on('end', function(){
           console.log('disconnected.');
         });

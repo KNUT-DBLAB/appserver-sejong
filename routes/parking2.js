@@ -15,32 +15,8 @@ router.get('/', function (req, res, next) {
   } else {
     console.log("1111111111111111111");
     cur_time = new Date(req.session.parking);
+    console.log(cur_time);
   }
-  //var cur_time = new Date();
-  console.log(req.query.sid);
-  console.log(req.query.cid);
-
-  /*
-  sql = 'select * from parkingslot where carid = ?;
-  dbconfig.query(sql, req.query.cid, function(err, results){
-    if (err) {
-      console.log(err);
-    } else {
-      console.log(results);
-    }
-  });
-  */
-
-  router.get('/', function (req, res, next) {
-    //console.log(req.query.cid);
-    sql = 'select slotid, x1, y1 from parkingslot where slotid = ?'
-    dbconfig.query(sql, function (err, results) {
-      if (err) {
-        console.log(err);
-      }
-    }
-    );
-  });
 
   sql = 'select carid, carstatus, movex, movey from locinfo where carid = ? AND time > ?'
   dbconfig.query(sql, [req.query.cid, cur_time], function (err, results) {
@@ -49,15 +25,13 @@ router.get('/', function (req, res, next) {
     } else {
       if (results.length == 0) {
         console.log("데이터가 없습니다.");
-        res.render('parking2', { d_x: 0, d_y: 0, time: cur_time.getTime(), carstatus: "0", carid: req.query.cid })
+        res.render('parking2', { locx:req.query.x1, locy:req.query.y1, time: cur_time.getTime(), carstatus: "0", carid: req.query.cid });
       } else {
-        //console.log(results)
         console.log("파킹 데이터의 개수 : " + results.length);
-        res.render('parking2', { d_x: 0, d_y: 0, time: cur_time.getTime(), state: results[results.length - 1]["carstatus"], carid: req.query.cid })
+        res.render('parking2', { locx:req.query.x1, locy:req.query.y1, time: cur_time.getTime(), state: results[results.length - 1]["carstatus"], carid: req.query.cid });
       }
     }
   });
-
 });
 
 router.post('/tracking', function (req, res, next) {
@@ -65,10 +39,10 @@ router.post('/tracking', function (req, res, next) {
     pre_time = new Date(req.session.parking);
   }
   var data = req.body;
-  //  pre_time = new Date(parseInt(data['pram']));
+  req.session.parkinglocx = data['locx'];
+  req.session.parkinglocy = data['locy'];
   carid = data['pramcar'];
-  console.log(carid);
-  console.log(pre_time);
+
   sql = 'select carstatus, movex, movey from locinfo where carid = ? AND time > ?'
   dbconfig.query(sql, [carid, pre_time], function (err, results) {
     if (err) {
@@ -79,15 +53,15 @@ router.post('/tracking', function (req, res, next) {
         results.carid = carid;
         results.carstatus = 1;
         results.time = data['pram'];
-        results.x1 = data['x1'];
-        results.y1 = data['y1'];
+        results.locx = req.session.parkinglocx;
+        results.locy = req.session.parkinglocy;
         res.json(results);
       } else {
         console.log("파킹 데이터의 개수 : " + results.length);
         results.carid = carid;
         results.time = data['pram'];
-        results.d_x = data['x1'];
-        results.d_y = data['y1'];
+        results.locx = req.session.parkinglocx;
+        results.locy = req.session.parkinglocy;
         res.json(results);
       }
     }

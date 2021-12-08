@@ -86,7 +86,8 @@ PRIMARY KEY (carid, time)
 );
 
 --locinfo
--- 1완료 0 이동중 2실패
+-- 1완료 0 이동중 2 실패
+-- 2완료 1 이동중 0 실패
 INSERT INTO locinfo(carid, time, movex, movey, carstatus) 
 VALUES(15, 20211220000000, 36.498300, 127.28200, 0);
 
@@ -103,6 +104,8 @@ VALUES(17, 20211220000000, 36.498500, 127.28200, 0);
 INSERT INTO locinfo(carid, time, movex, movey, carstatus) 
 VALUES(15, 20211220000000, 36.498300, 127.28200, 0);
 
+INSERT INTO locinfo(carid, time, movex, movey, carstatus) 
+VALUES(0, 20211222000000, 36.498300, 127.28200, 1);
 
 --픽업 위치 테이블
 create table pickuploc(
@@ -145,3 +148,4 @@ VALUES(2, 36.497787, 127.283348, 36.497801, 127.283394, 36.497820, 127.283383, 3
 
 --DB 데이터 랜덤하게 가져오기
 --select cid from restaurant order by rand() limit 10
+-- update parkingslot set slotstatus=1 where slotid=5;
