@@ -43,6 +43,15 @@
             <%= data["slotid"] %>번 주차면
         </p>
     </h2>
+    <h2>
+        <p span id="txtbox1" style="text-align:center;">하차 위치를 확인하려면 마커를 눌러주세요</p>
+    </h2>
+    <!-- <script>
+        function btnloc () {
+            document.images[0].src = "parking130.jpg" 
+            alert('이잉ㅇㅇㅇ')
+        }
+    </script> -->
 
     <div>
         <button class="styled1" type="button" id="parkingRequest">
@@ -57,12 +66,16 @@
         const locations = [
             /* x1, y1를 Get Value */
             { place: "마커1", lat: parseFloat(<%= data["x1"] %>), lng: parseFloat(<%= data["y1"] %>) },
+
+
         ];
 
         var map = new naver.maps.Map('map', {
             center: new naver.maps.LatLng(36.498418, 127.28269),
             zoom: 18
         });
+
+
 
         //1
         var polygon = new naver.maps.Polygon({
@@ -293,6 +306,63 @@
         }
         });
     </script>
+
+    <script>
+        var x1 = 36.498922;
+        var y1 = 127.281995;
+        var position = new naver.maps.LatLng(x1, y1);
+        var markerOptions = {
+            position: position,
+            map: map,
+            icon: {
+                url: '../images/parking.png',
+                size: new naver.maps.Size(70, 70),
+                origin: new naver.maps.Point(0, 0),
+                anchor: new naver.maps.Point(25, 26)
+            }
+        };
+
+        var marker_1 = new naver.maps.Marker(markerOptions);
+    </script>
+
+    <script>
+        var x2 = 36.497801;
+        var y2 = 127.283394;
+        var position1 = new naver.maps.LatLng(x2, y2);
+        var markerOptions = {
+            position: position1,
+            map: map,
+            icon: {
+                url: '../images/parking.png',
+                size: new naver.maps.Size(70, 70),
+                origin: new naver.maps.Point(0, 0),
+                anchor: new naver.maps.Point(25, 26)
+            }
+        };
+        var marker_2 = new naver.maps.Marker(markerOptions);
+    </script>
+        <script>
+        
+            naver.maps.Event.addListener(marker_1, 'click', function () {
+                console.log("1 click");
+                loc_check = 1;
+                loc_data = 1;
+                alert("픽업 지역이 선택되었습니다.");
+                document.getElementById("txtbox1").innerText = '세종특별시 수목원로 120 하차지점'
+    
+            });
+            function ViewLayer(){
+            document.getElementById("Pop").style.display='inline'
+         }
+            naver.maps.Event.addListener(marker_2, 'click', function () {
+                console.log("2 click");
+                loc_check = 1;
+                loc_data = 2;
+                alert("픽업 지역이 선택되었습니다.");
+                document.getElementById("txtbox1").innerText = '세종특별시 수목원로 130 하차지점'
+    
+            });
+        </script>
     <div>
 </body>
 

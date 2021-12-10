@@ -25,7 +25,7 @@
     <h2>
         <p span id="txtbox1" style="text-align:center;">지도에서 호출할 위치를 선택 해주세요.</p>
     </h2>
-
+    
     <div>
         <button class="styled1" type="button" id="pickupRequest">
             차량 호출 시작
@@ -331,23 +331,29 @@
     </script>
     <!-- 파키장이 중복으로 선택되지 않게 하는 부분 추가 -->
     <script>
+        
         naver.maps.Event.addListener(marker_1, 'click', function () {
             console.log("1 click");
             loc_check = 1;
             loc_data = 1;
             alert("픽업 지역이 선택되었습니다.");
-            document.getElementById("txtbox1").innerText = '세종특별시 수목원로 130 픽업지점'
+            document.getElementById("txtbox1").innerText = '세종특별시 수목원로 120 픽업지점'
 
         });
+        function ViewLayer(){
+        document.getElementById("Pop").style.display='inline'
+     }
         naver.maps.Event.addListener(marker_2, 'click', function () {
             console.log("2 click");
             loc_check = 1;
             loc_data = 2;
             alert("픽업 지역이 선택되었습니다.");
-            document.getElementById("txtbox1").innerText = '세종특별시 수목원로 120 픽업지점'
+            document.getElementById("txtbox1").innerText = '세종특별시 수목원로 130 픽업지점'
 
         });
     </script>
+
+
 </body>
 
 

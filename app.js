@@ -8,12 +8,6 @@ const http = require("http");
 const session = require("express-session");
 const MemoryStore = require("memorystore")(session);
 
-
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
-var parkingRouter = require('./routes/parking');
-var pickupRouter = require('./routes/pickup');
-
 var app = express();
 
 // view engine setup
@@ -40,9 +34,8 @@ app.use(
   })
 );
 
+var indexRouter = require('./routes/index');
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
-
 
 var regRouter = require('./routes/reg');
 app.use('/reg', regRouter);
@@ -58,25 +51,12 @@ app.use('/parking', parkingRouter);
 
 var parking2Router = require('./routes/parking2');
 app.use('/parking2', parking2Router);
-//app.use('/tracking/firstTime', parking2Router);
-
-var parkingloc = require('./routes/parkingloc');
-app.use('/parkingloc', parkingloc);
 
 var pickupRouter = require('./routes/pickup');
 app.use('/pickup', pickupRouter);
 
 var pickup2Router = require('./routes/pickup2');
 app.use('/pickup2', pickup2Router);
-
-//var backRouter = require('./routes/back');
-//app.use('/back', backRouter);
-
-
-
-// 쿠키
-
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
