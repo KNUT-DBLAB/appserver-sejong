@@ -34,6 +34,7 @@
 
     </div>
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script type="text/javascript"
         src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=4oxbi73uru&callback=initMap"></script>
     <script type="text/javascript">
@@ -336,7 +337,12 @@
             console.log("1 click");
             loc_check = 1;
             loc_data = 1;
-            alert("픽업 지역이 선택되었습니다.");
+            //alert("픽업 지역이 선택되었습니다.");
+            swal({
+              title: "픽업 지역이 선택되었습니다.",
+              icon: "success",
+              button: "확인",
+            });
             document.getElementById("txtbox1").innerText = '세종특별시 수목원로 120 픽업지점'
 
         });
@@ -347,7 +353,11 @@
             console.log("2 click");
             loc_check = 1;
             loc_data = 2;
-            alert("픽업 지역이 선택되었습니다.");
+            swal({
+              title: "픽업 지역이 선택되었습니다.",
+              icon: "success",
+              button: "확인",
+            });
             document.getElementById("txtbox1").innerText = '세종특별시 수목원로 130 픽업지점'
 
         });

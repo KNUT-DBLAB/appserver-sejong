@@ -22,6 +22,7 @@
   <!-- 맵 api-->
   <div id="map" style="width:auto;height:400px;"></div>
   <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script type="text/javascript"
     src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=4oxbi73uru&callback=initMap"></script>
   <script type="text/javascript">
@@ -258,8 +259,12 @@
 
           console.log(rev_data[rev_data.length - 1]["carstatus"]);
           if (rev_data[rev_data.length - 1]["carstatus"] == 2) {
-            alert("주차가 완료  되었습니다.");
-            location.href = "/main";
+            swal({
+              title: "주차가 완료 되었습니다.",
+              icon: "success",
+              button: "확인",
+            }).then((value) => {location.href = "/main";});
+            //location.href = "/main";
             clearInterval(load);
           } else if (rev_data[rev_data.length - 1]["carstatus"] == 0) {
             alert("주차를 실패 하였습니다.");
