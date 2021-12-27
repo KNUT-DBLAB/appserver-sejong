@@ -58,6 +58,9 @@ app.use('/pickup', pickupRouter);
 var pickup2Router = require('./routes/pickup2');
 app.use('/pickup2', pickup2Router);
 
+var pickup3Router = require('./routes/test');
+app.use('/test', pickup3Router);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

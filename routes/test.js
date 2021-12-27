@@ -12,11 +12,13 @@ router.get('/', function(req, res, next) {
       console.log(err);
     } else {
       if (results.length == 0) {
-        res.render('parking',{slotcheck:0, data:{slotid:99},carid:req.query.cid});
+        res.render('test',{slotcheck:0, data:{slotid:99},carid:req.query.cid});
       } else {
         // const rand = Math.floor(Math.random() * results.length)
         //console.log(results[rand]);
-        res.render('parking', {data: results, carid : req.query.cid, slotcheck : 1});
+        // results[0] 변경
+        console.log(results);
+        res.render('test', {data: results, carid : 0, slotcheck : 1});
         // res.render('parking', {data: results[1], carid : req.query.cid, slotcheck : 1});
       }
     }

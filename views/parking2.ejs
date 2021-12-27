@@ -215,30 +215,58 @@
       strokeWeight: 3
     });
 
+
+
     var x = parseFloat(<%= locx %>);
     var y = parseFloat(<%= locy %>);
+
+    // var position = new naver.maps.LatLng(x, y);
+    // var markerOptions = {
+    //   position: position,
+    //   map: map,
+    //   // icon: {
+    //   //   url: '../images/parking.png',
+    //   //   size: new naver.maps.Size(70, 70),
+    //   //   origin: new naver.maps.Point(0, 0),
+    //   //   anchor: new naver.maps.Point(25, 26)
+    //   // }
+    // }
+    // new naver.maps.Marker(markerOptions);
+
+    
+    var slot = String(<%= slotid %>);
+    var infowindow = new naver.maps.InfoWindow({
+      content: '<span class="marker-title">' + slot+'번'+ '</span>' + '<span>주차면</span>',
+      // maxWidth: 180,
+      backgroundColor: "#ffffff",
+      borderColor: "#000",
+      borderWidth: 0,
+      // FontFace: 10,
+      anchorSize: new naver.maps.Size(10, 10),
+      // anchorSkew: false,
+      // anchorColor: "#eee",
+
+    });
+
     var position = new naver.maps.LatLng(x, y);
-    var markerOptions = {
-      position: position,
+    infowindow.close()
+    var marker = new naver.maps.Marker({
       map: map,
-      icon: {
-        url: '../images/parking.png',
-        size: new naver.maps.Size(70, 70),
-        origin: new naver.maps.Point(0, 0),
-        anchor: new naver.maps.Point(25, 26)
-      }
-    }
-    new naver.maps.Marker(markerOptions);
+      position: position,
+    });
+
+    infowindow.open(map, marker)
 
     $(function () {
       var load = setInterval(function () {
         $.ajax({
           url: '/parking2/tracking',
           type: 'POST',
-          data: { pram:<%= time %>, pramcar: <%=carid%>, locx:<%=locx %>, locy:<%=locy %>},
+          data: { pram:<%= time %>, pramcar: <%=carid%>, locx:<%=locx %>, locy:<%=locy %>, slotid:slot},
         success: function (rev_data) {
           if (rev_data.length != 0) {
             //console.log(rev_data);
+
             //console.log(rev_data[0]["movey"]);
             for (var i = 0; i < rev_data.length; i++) {
               //console.log(i);
@@ -255,7 +283,7 @@
             }
           }
 
-          var marker_1 = new naver.maps.Marker(markerOptions);
+//          var marker_1 = new naver.maps.Marker(markerOptions);
 
           console.log(rev_data[rev_data.length - 1]["carstatus"]);
           if (rev_data[rev_data.length - 1]["carstatus"] == 2) {
@@ -263,11 +291,15 @@
               title: "주차가 완료 되었습니다.",
               icon: "success",
               button: "확인",
-            }).then((value) => {location.href = "/main";});
+            }).then((value) => { location.href = "/main"; });
             //location.href = "/main";
             clearInterval(load);
           } else if (rev_data[rev_data.length - 1]["carstatus"] == 0) {
-            alert("주차를 실패 하였습니다.");
+            swal({
+              title: "주차가 실패 하였습니다.",
+              icon: "success",
+              button: "확인",
+            });
             location.href = "/main";
             clearInterval(load);
           }
@@ -277,6 +309,8 @@
                 });
               }, 2000);                
             });
+
+
   </script>
 
   <div>

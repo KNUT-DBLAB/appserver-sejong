@@ -259,20 +259,52 @@
             strokeOpacity: 0.6,
             strokeWeight: 3
         });
-
+        var x = parseFloat(<%= data["x1"] %>);
+        var y = parseFloat(<%= data["y1"] %>);
         const locations = [
-            { place: "마커1", lat: parseFloat(<%= data["x1"] %>), lng: parseFloat(<%= data["y1"] %>) }
+            { place: "마커1", lat: x, lng: y }
         ];
+        var slotidString = (<%= data["slotid"] %>);
+        var MarkerString = [
+            '<span class="marker-title">' + slotidString + '번' + '</span>' + '<span>주차면</span>'
+        ].join('');
 
+        var infowindow = new naver.maps.InfoWindow({
+            content: MarkerString,
+            // maxWidth: 180,
+            backgroundColor: "#ffffff",
+            borderColor: "#000",
+            borderWidth: 0,
+            // FontFace: 10,
+            anchorSize: new naver.maps.Size(10, 10),
+            // anchorSkew: false,
+            // anchorColor: "#eee",
+
+        });
         for (var i = 0; i < locations.length; i++) {
+            infowindow.close()
             var marker = new naver.maps.Marker({
                 map: map,
-                icon: {
-                    url: '../images/car.png'
-                },
                 title: locations[i].place,
                 position: new naver.maps.LatLng(locations[i].lat, locations[i].lng),
             });
+        }
+        infowindow.open(map, marker)
+
+        // for (var i = 0; i < locations.length; i++) {
+        //     var marker = new naver.maps.Marker({
+        //         map: map,
+        //         title: locations[i].place,
+        //         position: new naver.maps.LatLng(locations[i].lat, locations[i].lng),
+        //     });
+        // }
+
+        if (x==1) {
+            swal({
+                title: "주차된 차량이 없습니다.",
+                icon: "error",
+                button: "확인",
+            }).then((value) => { location.href = "/main"; });
         }
 
         $("#pickupRequest").click(function () {
@@ -290,7 +322,7 @@
             location.href = "/pickup2?cid=" +<%=carid %> +"&y1=" + y2 + "&x1=" + x2;
         }
             }else {
-            alert("픽업 구역부터 선택해주세요.");
+            alert("승차 구역을 선택해주세요.");
         }
         });
     </script>
@@ -339,11 +371,11 @@
             loc_data = 1;
             //alert("픽업 지역이 선택되었습니다.");
             swal({
-              title: "픽업 지역이 선택되었습니다.",
+              title: "승차 지점이 선택되었습니다.",
               icon: "success",
               button: "확인",
             });
-            document.getElementById("txtbox1").innerText = '세종특별시 수목원로 120 픽업지점'
+            document.getElementById("txtbox1").innerText = '세종특별시 수목원로 120 승차지점'
 
         });
         function ViewLayer(){
@@ -354,11 +386,11 @@
             loc_check = 1;
             loc_data = 2;
             swal({
-              title: "픽업 지역이 선택되었습니다.",
+              title: "승차 지점이 선택되었습니다.",
               icon: "success",
               button: "확인",
             });
-            document.getElementById("txtbox1").innerText = '세종특별시 수목원로 130 픽업지점'
+            document.getElementById("txtbox1").innerText = '세종특별시 수목원로 130 승차지점'
 
         });
     </script>

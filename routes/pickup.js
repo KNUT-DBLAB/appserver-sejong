@@ -1,6 +1,9 @@
 var express = require('express');
 var net = require('net');
 var dbconfig = require('../config/dbconfig');
+// CommonJS
+var swal = require('sweetalert');
+const { addListener } = require('process');
 var router = express.Router();
 
 /* GET home page. */
@@ -10,8 +13,12 @@ router.get('/', function(req, res, next) {
     if (err) {
       console.log(err);
     } else {
-      //console.log(results);
-      res.render('pickup', {data: results[0], carid : req.query.cid});
+      console.log(results);
+      if (results.length == 0) {
+        res.render('pickup', {data: {"x1":1,"y1":1}, carid : req.query.cid, slotid : 0});
+      } else {
+        res.render('pickup', {data: results[0], carid : req.query.cid});
+      }
     }
   });
 });
@@ -65,13 +72,13 @@ router.post('/Request', function (req, res) {
             });
             // 차량 고장이나 요청응답실패를 위한 처리 구현해야함
             if (state == 2){
-              /*
+              
               updatesql = 'update parkingslot set slotstatus = 1, carid = 99 where slotid=?'
               dbconfig.query(updatesql, parseInt(carid), function(err, results){
                 if (err) { console.log(err); }
                 else { console.log(results); }
               });
-              */
+              
               socket.end();
             }
           });

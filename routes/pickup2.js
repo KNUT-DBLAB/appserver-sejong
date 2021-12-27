@@ -4,6 +4,9 @@ var router = express.Router();
 const mysql = require('mysql');
 
 /* GET home page. */
+
+
+
 router.get('/', function(req, res, next){
   var cur_time;
   if (req.session.pickupCheck == 0) {
@@ -16,6 +19,7 @@ router.get('/', function(req, res, next){
     cur_time = new Date(req.session.pickup);
     console.log(cur_time);
   }
+  
   sql = 'select carstatus, movex, movey from locinfo where time > ?'
   dbconfig.query(sql, cur_time, function(err, results){
     if (err) {
@@ -50,12 +54,14 @@ router.post('/tracking', function(req, res, next) {
         results.time = data['pram'];
         results.locx = req.session.pickuplocx;
         results.locy = req.session.pickuplocy;
+        console.log(results);
         res.json(results);
       } else  {
         console.log("픽업 데이터의 개수 : "+results.length);
         results.time = data['pram'];
         results.locx = req.session.pickuplocx;
         results.locy = req.session.pickuplocy;
+        console.log(results);
         res.json(results);
       }
     }

@@ -73,9 +73,7 @@ INSERT INTO parkingslot(slotid, carid, slotstatus, linkid, parkingzone1, parking
 VALUES(11, 99, 1, 11, 11, 11, 36.4982, 127.28259, 36.498173, 127.282625, 36.498157, 127.282606, 36.498185, 127.282571);
 
 --위치정보저장
---carstatus 주차중 0 주차완료 1 주차실패 2
---에서 밑에꺼로 변경
---carstatus 주차실패 0 주차완료 1 주차중 2
+--carstatus 주차실패 0 주차중 1 주차완료 2
 create table locinfo(
   `carid` INT NOT NULL,
   `time` DATETIME NOT NULL,
@@ -96,7 +94,6 @@ PRIMARY KEY (carid, time)
 );
 
 --locinfo
--- 1완료 0 이동중 2 실패
 -- 2완료 1 이동중 0 실패
 INSERT INTO locinfo(carid, time, movex, movey, carstatus) 
 VALUES(15, 20211220000000, 36.498300, 127.28200, 0);
@@ -170,20 +167,20 @@ INSERT INTO locinfo(carid, time, movex, movey, carstatus)
 VALUES(15, 20211220000000, 36.498300, 127.28200, 0);
 
 
+INSERT INTO locinfo(carid,time, movex, movey, carstatus) 
+values (0 , 20211230000000 , 36.4978107770 , 127.2833816850 , 1);
 INSERT INTO locinfo(carid, time, movex, movey, carstatus) 
-values (0 , 20211207142712 , 36.4978107770 , 127.2833816850 , 1);
+values (0 , 20211230000001 , 36.4978100391 , 127.2833794358 , 1);
 INSERT INTO locinfo(carid, time, movex, movey, carstatus) 
-values (0 , 20211207142714 , 36.4978100391 , 127.2833794358 , 1);
+values (0 , 20211230000002 , 36.4978016073 , 127.2833568580 , 1);
 INSERT INTO locinfo(carid, time, movex, movey, carstatus) 
-values (0 , 20211207142716 , 36.4978016073 , 127.2833568580 , 1);
+values (0 , 20211230000003 , 36.4977871526 , 127.2833235577 , 1);
 INSERT INTO locinfo(carid, time, movex, movey, carstatus) 
-values (0 , 20211207142718 , 36.4977871526 , 127.2833235577 , 1);
+values (0 , 20211230000004 , 36.4977667450 , 127.2832976752 , 1);
 INSERT INTO locinfo(carid, time, movex, movey, carstatus) 
-values (0 , 20211207142720 , 36.4977667450 , 127.2832976752 , 1);
+values (0 , 20211230000005 , 36.4977395837 , 127.2832827666 , 1);
 INSERT INTO locinfo(carid, time, movex, movey, carstatus) 
-values (0 , 20211207142722 , 36.4977395837 , 127.2832827666 , 1);
-INSERT INTO locinfo(carid, time, movex, movey, carstatus) 
-values (0 , 20211207142724 , 36.4977108860 , 127.2832834145 , 1);
+values (0 , 20211230000006 , 36.4977108860 , 127.2832834145 , 1);
 INSERT INTO locinfo(carid, time, movex, movey, carstatus) 
 values (0 , 20211207142726 , 36.4976857523 , 127.2833011149 , 1);
 INSERT INTO locinfo(carid, time, movex, movey, carstatus) 
