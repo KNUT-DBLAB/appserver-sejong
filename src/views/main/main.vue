@@ -45,30 +45,24 @@
 
 
 <script>
+
 import bottomNav from '@/components/bottomNav.vue';
 
 export default{
   components: { bottomNav },
-    // data() {
-    //     return {
-    //         name: null
-    //     };
-    // },
-    // mounted(){
-    //     this.emitter.on('addMemberInfo', name => {
-    //         this.name = name;
-    //         console.log(name);
-    //     })
-    // },
-    // methods: {
-    //     // MemberFunc(memberInfo){
-    //     //     console.log(memberInfo);
-    //     // },
-    //     testCheck(){
-    //         console.log(name);
-    //     }
-    // }
+    data() {
+        return {
+            name: null
+        };
+    },
+    methods: {
+        testCheck(){
+            console.log(name);
+        }
+    }
 }
+
+
 </script>
 
 <style>

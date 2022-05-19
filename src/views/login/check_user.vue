@@ -9,8 +9,8 @@
     <ul class="check button1">
     <ul class="check button1">
         
-        <li><button type="button" class="fpmgBt1" ><router-link :to="{ path: '/signup' }">소비자 회원</router-link></button></li>
-        <li><button type="button" class="fpmgBt2" ><router-link :to="{ path: '/check_farm' }">농가 회원</router-link></button></li>
+        <li><button type="button" class="fpmgBt1" v-on:click="navigatesignup">소비자 회원</button></li>
+        <li><button type="button" class="fpmgBt2" v-on:click="navigatecheck_farm">농가 회원</button></li>
     </ul>
     </ul>
 	</div>
@@ -20,6 +20,18 @@
 
 
 <script>
+export default{
+    
+    methods: {
+        navigatesignup() {
+            this.$router.push('/signup');
+        },
+        navigatecheck_farm() {
+            this.$router.push('/check_farm');
+        } 
+    }
+}
+
 </script>
 
 

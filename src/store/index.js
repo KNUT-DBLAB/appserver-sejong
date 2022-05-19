@@ -13,12 +13,19 @@ export default createStore({
   state: {
     existEmail: true,
     kindOfFarm: null,
-    user :{
+    user: {
         name: null,
         email: null,
         passwd: null,
         phonenum: null,
-    }
+    },
+    config: {
+      headers: {
+          TOKEN: null,
+      }
+    },
+    auctionList: [],
+    limit: 0,
   },
   mutations: {
       KIND_OF_FARM: (state, payload) => {
@@ -32,6 +39,39 @@ export default createStore({
       EXIST_EMAIL: (state, existEmail) => {
         state.existEmail = existEmail
         console.log(state.existEmai);
+      },
+      TOKEN_SAVE: (state, token) => {
+        console.log("TOKEN_SAVE: "+ token);
+        state.config.headers.TOKEN = token;
+        console.log(state.config);
+      },
+      PUSH_AUCTION: (state, auction) => {
+        console.log(auction);
+        state.auctionList.push(auction);
+      },
+      RESET_AUCTIONLIST: (state) => {
+        state.auctionList = [];
+      },
+      UP_LIMIT: (state, addNum) => {
+        console.log(addNum);
+        state.limit += addNum;
+      },
+      RESET_LIMIT: (state) => {
+        state.limit = 0;
+      },
+      UPDATE_BID_PRICE: (state, response_bidding) => {
+        console.log("UPDATE_BID_PRICE");
+        console.log(response_bidding);
+
+        for (let i = 0; i < state.auctionList.length; i++) {
+          if(response_bidding.auction_id == state.auctionList[i].auction_Id){
+            console.log(state.auctionList[i].auction_Id);
+            console.log(response_bidding.auction_id);
+
+            state.auctionList[i].bid_price = response_bidding.bid_price
+            break;
+          }
+        }
       }
   },
   actions: {

@@ -17,12 +17,14 @@
 			</div> -->
 
         <v-form ref="form" v-model="valid" lazy-validation @submit.prevent="submitForm">
-            <v-text-field v-model="email" :rules="emailRules" label="E-mail" required></v-text-field>
+            <v-text-field v-model="email" :rules="emailRules" label="E-mail" required ></v-text-field>
 
-            <v-text-field v-model="password" :rules="passwordRules" label="Password" type="password" required>
-            </v-text-field>
+            <!-- <v-text-field v-model="password" :rules="passwordRules" label="Password" type="password" required>
+            </v-text-field> -->
 
-
+            <v-text-field v-model="password" :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+                :rules="[rules.required, rules.min]" :type="show1 ? 'text' : 'password'" name="input-10-1"
+                label="Password" hint="비밀번호는 최소 6글자 입니다" counter @click:append="show1 = !show1"></v-text-field>
 
             <div class="login_keep_wrap" id="login_keep_wrap">
                 <div class="keep_check">
@@ -49,79 +51,68 @@
 </template>
 
 <script>
-    import axios from "axios"
 
-    export default {
-        name: 'SignupForm',
-        data() {
-            return {
-				valid: false,
-                checkUser: 'consumer',
-                email: null,
-                password: null,
-                token: null,
-				emailRules: [
-					v => !!v || 'E-mail is required',
-					v => /.+@.+/.test(v) || 'E-mail must be valid',
-				],
-				passwordRules: [
-					v => !!v || 'password is required',
-					v => v.length <= 6 || 'password must be less than 6 characters',
-				],
-            };
-        },
-        methods: {
-            login() {
-                let frm = new FormData();
+import axios from "axios"
 
-                frm.append("emailCheckUser", this.email + ":" + this.checkUser);
-                frm.append('password', this.password);
+export default {
+    // name: 'SignupForm',
+    data() {
+        return {
+            valid: false,
+            checkUser: 'consumer',
+            email: null,
+            password: null,
+            token: null,
+            show1: false,
+            show2: true,
+            // show3: false,
+            // show4: false,
+            emailRules: [
+                v => !!v || 'E-mail을 입력해주세요.',
+                v => /.+@.+/.test(v) || '유효하지 않은 형식의 E-mail 입니다.',
+            ],
+            // passwordRules: [
+            //     v => !!v || 'password is required',
+            //     v => v.length <= 6 || 'password must be less than 6 characters',
+            // ],
+            rules: {
+                required: value => !!value || '비밀번호를 입력해주세요.',
+                min: v => v.length >= 6 || '비밀번호는 최소 6글자 입니다',
+                emailMatch: () => (`The email and password you entered don't match`),
+            },  
+        };
+    },
+    methods: {
+        login() {
+            axios.post('http://localhost:8080/api/login',  { email: this.email, checkUser: this.checkUser, password: this.password})
+            .then(res => {
+                console.log(res);
+                if (res.data == "") {
+                    alert("아이디 또는 비밀번호가 틀렸습니다!")
+                    console.log("....");
+                } else if (res.data.consumer_id == 0){
+					alert("중복 로그인입니다! 다시 한번 로그인 해주세요!")
+					console.log("중복 로그인!");
+				} else {
+					// main으로 넘기기
+					console.log(res.data);
 
-                console.log(frm);
-
-                axios.post('http://localhost:8080/api/login', frm, {
-                    headers: {
-                        'Content-Type': 'multipart/form-data'
-                    }
-                })
-                    .then(res => {
-                        console.log(res);
-                        if (res.data == "") {
-                            alert("아이디 또는 비밀번호가 틀렸습니다!")
-                            console.log("....");
-                        } else {
-                            // main으로 넘기기
-                            this.$router.push({ name: 'main', params: res.data.token });
-                        }
-                    })
-                    .catch(err => {
-                        console.log(err);
-                    });
-
-                /*
-                console.log(loginObj);
-                axios.post('http://localhost:8080/api/login', loginObj)
-                .then(res => {
-                    console.log(res);
-                    if (res.data == ""){
-                        alert("아이디 또는 비밀번호가 틀렸습니다!")
-                        console.log("....");
-                    } else {
-                        // main으로 넘기기
-                        this.$router.push({name: 'main', params: res.data.token});
-                    }
-                })
-                .catch(err => {
-                    console.log(err);
-                });
-                */
-            }
-        },
-    };
-
+					this.$store.commit('TOKEN_SAVE', res.data.token);
+					console.log(this.$store.state.config.headers.TOKEN);
+					this.$router.push({name: 'main'});
+				}
+            })
+            .catch(err => {
+                console.log(err);
+            });
+        }
+    },
+}
 </script>
 
 <style>
+
+
     /* 
 	https://github.com/vuetifyjs/vuetify/blob/next/packages/docs/src/examples/v-form/usage.vue 
 	https://minu0807.tistory.com/82 아이디 유효성체크

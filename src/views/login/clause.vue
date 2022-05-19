@@ -90,12 +90,10 @@
             </li>
         </ul>
         <ul class="footBtwrap clearfix">
-            <li><button type="button" class="fpmgBt1" ><router-link :to="{ path: '/login' }">취소</router-link></button></li>
-
-            <router-link to ='check_user' class="footBtwrap clearfix">
-            <li><button type="button" class="fpmgBt2" >확인</button></li>
-            </router-link>
+            <li><button type="button" class="fpmgBt1" v-on:click="navigatehome">취소</button></li>
+            <li><button type="button" class="fpmgBt2" v-on:click="navigatecheck_user">확인</button></li>
         </ul>
+
 
 		</form>
 	</div>
@@ -119,7 +117,12 @@ export default {
 		}
 	},
     methods:{
-        
+        navigatehome() {
+            this.$router.push('/');
+        },
+        navigatecheck_user() {
+            this.$router.push('/check_user');
+        }   
     },
     computed:{
         checkAll: {
@@ -151,6 +154,8 @@ export default {
 
 
 	
-<style>
-
+<style >
+.v-btn.v-btn--density-default{
+    width: 50%;
+}
 </style>

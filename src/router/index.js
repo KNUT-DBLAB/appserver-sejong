@@ -65,7 +65,6 @@ const routes = [
 
 
   //메인
-
   {
     path: '/main',
     name: 'main',
@@ -119,8 +118,9 @@ const routes = [
     component: () => import('../views/auction/farm_calculate_clear.vue')
   },
   {
-    path: '/auction_detail',
+    path: '/auction_detail/:id',
     name: 'auction_detail',
+    // props: true,
     component: () => import('../views/auction/auction_detail.vue')
   },
 
@@ -134,11 +134,6 @@ const routes = [
     path: '/farm_mypage_get_review',
     name: 'farm_mypage_get_review',
     component: () => import('../views/myPage/farm_mypage_get_review.vue')
-  },
-  {
-    path: '/farm_mypage_post_review',
-    name: 'farm_mypage_post_review',
-    component: () => import('../views/myPage/farm_mypage_post_review.vue')
   },
   {
     path: '/farm_mypage_keep',
@@ -155,18 +150,15 @@ const routes = [
     name: 'ServiceCenter',
     component: () => import('../views/myPage/ServiceCenter.vue')
   },
-  
+
+
   //////////////////////////////////컴포넌트/////////////////////////////////
   {
     path: '/bottomNav',
     name: 'bottomNav',
     component: () => import('../components/bottomNav.vue')
   },
-  {
-    path: '/image_slider',
-    name: 'image_slider',
-    component: () => import('../components/image_slider.vue')
-  },
+
 ]
 
 const router = createRouter({

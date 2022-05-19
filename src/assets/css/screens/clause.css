@@ -70,9 +70,11 @@ ul.join_box {
 }
 .fpmgBt1 {
 	background-color:#fff;
-	color:#888
+	color:#888;
+	border: 3px black
 }
 .fpmgBt2 {
 	background-color:lightsalmon;
-	color: #fff
+	color: #fff;
+	border: 3px black
 }

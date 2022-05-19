@@ -47,6 +47,7 @@
         </div>
     </div>
 </fieldset>
+
 <div>
     <input multiple="multiple" @change="upload()" type="file" id="product_img_file" name="product_img_file" accept ="image/*"> <br>
     <img src="image">

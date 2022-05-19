@@ -9,21 +9,21 @@
 		이때 페이지가 새로고침되므로 .prevent를 통해 새로고침을 막고 methods의 함수롤 호출하게 한다. -->
 		<form @submit.prevent="submitBizForm" class="login-form">
         <label id="login-form-label">농가명</label>
-        <input v-model="f_farm_name" class="information-form__input" type="text" required placeholder="농가명">
+        <input v-model="farm_member_info.f_farm_name" class="information-form__input" type="text" required placeholder="농가명">
 
         <label id="login-form-label">대표자</label>
-        <input v-model="f_representative" class="information-form__input" type="text" required placeholder="대표자">
+        <input v-model="farm_member_info.f_representative" class="information-form__input" type="text" required placeholder="대표자">
 
         <label id="login-form-label">주민등록번호</label>
-        <input v-model="f_RRN" class="login-form__input" type="text" required placeholder="주민등록번호">
+        <input v-model="farm_member_info.f_RRN" class="login-form__input" type="text" required placeholder="주민등록번호">
 
         <label id="login-form-label">사업장 소재지</label>
-        <input v-model="f_location" class="login-form__input" type="text" required placeholder="사업장 소재지">
+        <input v-model="farm_member_info.f_location" class="login-form__input" type="text" required placeholder="사업장 소재지">
 
         <label id="login-form-label">농가 전화번호</label>
-        <input v-model="f_num" class="login-form__input" type="text" required placeholder="농가 전화번호">
+        <input v-model="farm_member_info.f_num" class="login-form__input" type="text" required placeholder="농가 전화번호">
 
-        <input class="login-form__btn" type="submit" @click="submitFuserSignUp({f_farm_name, f_representative, f_RRN, f_location, f_num})" value="다음">
+        <input class="login-form__btn" type="submit" @click="submitFuserSignUp()" value="다음">
 		</form>
 	</div>
 </template>
@@ -35,19 +35,40 @@ export default {
 	name: 'submitBizForm',
 	data() {
 		return {
-			f_farm_name: null,
-			f_representative: null,
-			f_RRN: null,
-			f_location: null,
-			f_num: null
+			farm_member_info: {
+				f_name: this.$store.state.user.name,
+				f_email: this.$store.state.user.email,
+				f_passwd: this.$store.state.user.passwd,
+				f_phonenum: this.$store.state.user.phonenum,
+
+				f_farm_name: null,
+				f_representative: null,
+				f_RRN: null,
+				f_location: null,
+				f_num: null
+				
+
+			}
+			
 		};
 	},
 	methods:{
-		submitFuserSignUp(FuserSignUp) {
-			console.log(FuserSignUp);
-			axios.post('http://localhost:8080/api/signupFarmMember', FuserSignUp)
+		submitFuserSignUp() {
+			console.log(this.farm_member_info);
+			axios.post('http://localhost:8080/api/signupFarmMember', this.farm_member_info)
 			.then(res => {
 				console.log(res);
+				if (res.data == 0){
+					alert("회원가입 실패..")
+				} else {
+					alert("회원가입 성공..")
+					// main으로 넘기기
+					console.log("main으로!!");
+					console.log(res.data.token);
+					
+					this.$store.commit('TOKEN_SAVE', res.data.token);
+					this.$router.push({name: 'main', params: this.token});
+				}
 			})
 			.catch(err => {
 				console.log(err);
